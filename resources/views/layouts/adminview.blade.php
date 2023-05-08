@@ -1,107 +1,178 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Your name">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Espace admin</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@yield('title', config('app.name'))</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap responsive -->
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-    <!-- Font awesome - iconic font with IE7 support --> 
-    <link href="css/font-awesome.css" rel="stylesheet">
-    <link href="css/font-awesome-ie7.css" rel="stylesheet">
-    <!-- Bootbusiness theme -->
-    <link href="css/boot-business.css" rel="stylesheet">
-	
-   <style type="text/css">
-      .invisible{
-        display: none;
-      }
-    </style>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="admin/css/font-awesome4-0-0.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="admin/css/ionicons2-0-1.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="admin/datatables/dataTables.bootstrap4.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="admin/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="welcome" class="nav-link">Vers le site</a>
+      </li>
+      
+    </ul>
 
-  </head>
-<body > 
-    <!-- Start: HEADER -->
-    <header>
-      <!-- Start: Navigation wrapper -->
-      <div class="navbar navbar-fixed-top">
-        <div class=" navbar-inner">
-          <div class="container">
-            <a href="welcome" class="brand brand-bootbus"><img src="img/logothor_tech-logo.jpg" class="img-circle" width="80px" height="80px" alt="">THOR TECHNOLOGIE</a>
-            <!-- Below button used for responsive navigation -->
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <!-- Start: Primary navigation -->
-            <div class="nav-collapse collapse">        
-              <ul class="nav pull-right">
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Poduits et services<b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li class="nav-header">PRODUITS</li>
-                    <li><a href="">Produit1</a></li>
-                    <li><a href="">Produit2</a></li>
-                    <li><a href="">Produit3</a></li>
-                    <li><a href="">Tous les produits</a></li>             
-                    <li class="divider"></li>
-                    <li class="nav-header">SERVICES</li>
-                    <li><a href="">Service1</a></li>
-                    <li><a href="">Service2</a></li>
-                    <li><a href="">Service3</a></li>
-                    <li><a href="">Tous les services</a></li>
-                  </ul>                  
-                </li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">A propos de nous<b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">L'équipe</a></li>
-                    <li><a href="#">Partenaires</a></li>
-                  </ul>
-				        </li>
-				        <li><a href="/admin_login"> @yield('onglet')</a></li>
-                
-              </ul>
-            </div>
-          </div>
+    <!-- SEARCH FORM -->
+  
+
+    
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link">
+      <img src=""
+           alt="thor techonologie Logo"
+           class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">Espace admin</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">{{session('pseudo')}}</a>
         </div>
       </div>
-      <!-- End: Navigation wrapper -->   
-    </header>
-    <!-- End: HEADER -->
-    <!-- Start: MAIN CONTENT -->
-    @yield('content')
-    <!-- End: MAIN CONTENT -->
-    <!-- Start: FOOTER -->
-    <footer>
-      
-      <div class="container">
-        <p>
-          &copy; 2023, Tout Droits réservés.
-        </p>
-      </div>
-    </footer>
-    <!-- End: FOOTER -->
-   <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/boot-business.js"></script>
-    <!--<script type="module" src="js/trace.js"></script>-->
-	
-	
-	
-	<!-- pour les tableaux-->
-	
-	 
-  <script src="datatables/dataTables.bootstrap4.min.js"></script>
-	
-	<!--<script src="js/datatables-demo.js"></script>
-  <script src="js/sb-admin-2.min.js"></script>
-	<script src="js/jquery.easing.min.js"></script>
-	<script src="js/bootstrap.bundle.min.js"></script>-->
-	
-  </body>
-</html>
 
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="nav-icon fa fa-gift"></i>
+              <p>
+                Produits
+               
+              </p>
+            </a>
+          </li>
+			
+		  <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="nav-icon fa fa-th"></i>
+              <p>
+               Services
+               
+              </p>
+            </a>
+          </li>
+     
+
+          <li class="nav-item">
+            <a href="add_user" class="nav-link">
+              <i class="nav-icon fa fa-edit"></i>
+              <p>
+                Inscrire un client
+               
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="add_request" class="nav-link">
+              <i class="nav-icon fa fa-question"></i>
+              <p>
+                Ajouter une requête
+               
+              </p>
+            </a>
+          </li>
+         
+          <li class="nav-item">
+            <a href="login_admin" class="nav-link">
+              <i class="nav-icon fa fa-user"></i>
+              <p>
+                Déconnexion
+               
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    @yield('content')
+   
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    
+    <strong>Copyright &copy; 2023</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="admin/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="admin/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables -->
+<script src="admin/datatables/jquery.dataTables.js"></script>
+<script src="admin/datatables/dataTables.bootstrap4.js"></script>
+<!-- SlimScroll -->
+<script src="admin/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="admin/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="admin/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="admin/js/demo.js"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+</script>
+</body>
+</html>

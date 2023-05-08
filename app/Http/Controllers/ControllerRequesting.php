@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Admin;
 use App\Models\Requesting;
+use DB;
 
 class ControllerRequesting extends Controller
 {
@@ -104,5 +105,31 @@ class ControllerRequesting extends Controller
         {
 
         }
+    }
+
+    public function inProgressRequests()
+    {
+    	//fonction qui affiche les requetes en cours
+    	$req = Customer::join('requestings', 'requestings.id', '=', 'customers.id')->where('requestings.status', '0')->get(['customers.firstname', 'customers.lastname', 'customers.user_tel', 'requestings.device', 'requestings.object', 'requestings.requesting_date', 'requestings.id_requesting']);
+    	return $req;
+    }
+
+     public function myRequests()
+    {
+    	//fonction qui affiche les requetes en cours du client
+    }
+
+    public function deleteRequestings()
+    {
+    	//supression poar l'admin
+    	//dd(request('id'));
+    	DB::table('requestings')->where('id_requesting', '=', request('id'))->delete();
+
+    	return view('admin/admin_dashboard');
+    }
+
+    public function deleteMyRequestings()
+    {
+    	//supression poar l'utilisateur
     }
 }

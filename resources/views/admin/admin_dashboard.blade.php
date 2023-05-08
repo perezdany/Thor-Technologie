@@ -1,133 +1,76 @@
 @extends('../layouts/adminview')
 
-@section('title', config('app.name').' | Mon Espace')
 
-@section('onglet', 'Déconnexion')
 @section('content')
-<div class="content">
-  <!-- Start: PRODUCT LIST -->
-  <div class="container">
-    <div class="page-header">
-     <h2>Bienvenue {{session('pseudo')}}.</h2> 
-    </div>
-    <div class="center-align">
-      @if(session('success'))
-      <font color="blue">{{session('success')}}</font>
-      @endif 
-      @if(session('error')) 
-      <font color="red">{{session('error')}}</font>
-
-      @endif
-    </div>
-
-  <div class="row-fluid">
-    
-   
-    <ul class="thumbnails" id="thelist">
-      <li class="span3">
-        <div class="thumbnail">
-          <div class="caption">
-            <h3>Product name</h3>
-            <p>
-              Few attractive words about your product.Few attractive words about your product.
-              Few attractive words about your product.Few attractive words about your product.
-            </p>
+ <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Tableau de bord</h1>
           </div>
-          <div class="widget-footer">
-            <p>
-              <a href="#" class="btn btn-primary">Valider</a>&nbsp;
-              <a href="product.html" class="btn">Modifier</a>
-            </p>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Admin</a></li>
+              <li class="breadcrumb-item active">tableaux de bord</li>
+            </ol>
           </div>
         </div>
-      </li>
-      <li class="span3">
-        <div class="thumbnail">
-          <div class="caption">
-            <h3>Product name</h3>
-            <p>
-              Few attractive words about your product.Few attractive words about your product.
-              Few attractive words about your product.Few attractive words about your product.
-            </p>
-          </div>
-          <div class="widget-footer">
-            <p>
-              <a href="#" class="btn btn-primary">Valider</a>&nbsp;
-              <a href="product.html" class="btn">Modifier</a>
-            </p>
-          </div>
-        </div>
-      </li>
-      <li class="span3">
-        <div class="thumbnail">
-          <div class="caption">
-            <h3>Product name</h3>
-            <p>
-              Few attractive words about your product.Few attractive words about your product.
-              Few attractive words about your product.Few attractive words about your product.
-            </p>
-          </div>
-          <div class="widget-footer">
-            <p>
-              <a href="#" class="btn btn-primary">Valider</a>&nbsp;
-              <a href="product.html" class="btn">Modifier</a>
-            </p>
-          </div>
-        </div>
-      </li>
-     <li class="span3">
-        <div class="thumbnail">
-          <div class="caption">
-            <h3>Product name</h3>
-            <p>
-              Few attractive words about your product.Few attractive words about your product.
-              Few attractive words about your product.Few attractive words about your product.
-            </p>
-          </div>
-          <div class="widget-footer">
-            <p>
-              <a href="#" class="btn btn-primary">Valider</a>&nbsp;
-              <a href="product.html" class="btn">Modifier</a>
-            </p>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-  
-  <div class="pagination pagination-centered">
-    <ul>
-      <li class="">
-        <a href="#">&laquo;</a>
-      </li>
-      <li class="">
-        <a href="#">previous</a>
-      </li>
-      <li>
-        <a href="#">next</a>
-      </li>
-      <li>
-        <a href="#">&raquo;</a>
-      </li>
-    </ul>
-  </div>
-</div><!-- End: PRODUCT LIST -->
+      </div><!-- /.container-fluid -->
+    </section>
 
-
-<div class="container">
- <div class="row">
-  <div class="span6 offset3">
-   <h4 class="widget-header"><i class="icon-beaker"></i>Actions</h4>
-   <div class="widget-body">
-    <div class="center-align">
-     <button class="btn btn-primary btn-large" ><a href="add_customer"><font color="#FFF6F6">Inscrire un client</font></a></button>&nbsp;&nbsp;&nbsp;
-     <button class="btn btn-primary btn-large" ><a href="add_request"><font color="white">Ajouter une requête</font></a></button>
-   </div>
- </div>
-</div>
-</div>
-</div>
-</div>
-
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+       
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Requêtes en cours</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Nom & Prénom(s)</th>
+                  <th>Téléphone</th>
+                  <th>Appareil</th>
+                  <th>Motif</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                	<?php
+                		use App\Http\Controllers\ControllerRequesting;
+                		$req = (new ControllerRequesting())->inProgressRequests();
+                		?>
+                		@foreach($req as $request)
+                	
+                			<tr><td>{{$request->firstname}} {{$request->lastname}}</td><td>{{$request->user_tel}}</td><td>{{$request->device}}</td><td>{{$request->object}}</td><td>{{$request->requesting_date}}</td><td><a href="/add_request?id={{$request->id_requesting}}"><button class="btn-primary">modifier<i class="nav-icon fa fa-edit"></i></button></a><form method="post" action="/admin_dashboard">@csrf<input type="text" value="{{$request->id_requesting}}" style="display:none;" name="id"><button class="btn-danger">supprimer<i class="nav-icon fa fa-trash"></i></button></form></td></tr>
+                		@endforeach
+                	
+                	
+                </tbody>
+                <tfoot>
+                	<th>Nom & Prénom(s)</th>
+                  <th>Téléphone</th>
+                  <th>Appareil</th>
+                  <th>Motif</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
 
 @endsection

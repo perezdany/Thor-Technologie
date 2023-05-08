@@ -158,7 +158,7 @@ class UserController extends Controller
 		$user_email = request('email');
 		$user_password = Hash::make(request('password'));
 		
-		//NB: ECRIRE UN CODE JS POUR VERIFIER SI LA CONFIRMATION DU MOT DE PASSE ENTTRE CORRESPOND PAS
+		//NB: ECRIRE UN CODE JS POUR VERIFIER SI LA CONFIRMATION DU MOT DE PASSE ENTTRE CORRESPOND PAS(fait)
 		
 		//FAIRE AUSSi UN CODE DE SECUITE POUR NE PAS QUE L'UTILISATEUR S'ENREGISTRE PLUSEUR FOIS AVEC LE MEME MAIL c'est deja fait avec verify_exist
 		$verify_exist = Customer::where('user_email', $user_email)->first();

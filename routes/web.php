@@ -81,9 +81,16 @@ Route::post('/login_client', [UserController::class, 'customerLogin']);
 //Routes pour les formulaires d'ajout
 Route::get('/add_customer', [UserController::class, 'addcustomer'])->name('inscription');
 
+Route::get('/add_user', function(){
+	return view('admin/add_user');
+});
+
 Route::get('/confirm/{id}/{token}', [UserController::class, 'confirm']);
 
 Route::post('/add_customer', [UserController::class, 'createCustomer']);
+
+Route::post('/add_user', [UserController::class, 'createCustomer']);
+
 
 
 //les requetes des clients
@@ -105,6 +112,8 @@ Route::get('/add_request', function(){
 });
 
 //ajout des requetses pr le client ou l'admin
+Route::post('/add_user', [Usercontroller::class, 'createCustomer']);
+
 Route::post('/add_request', [ControllerRequesting::class, 'createRequest']);
 
 Route::post('/espace_client', [ControllerRequesting::class, 'addRequest']);
@@ -117,6 +126,9 @@ Route::get('/edit_request', [ControllerRequesting::class, 'customerEditRequestFo
 
 Route::post('/update_request', [ControllerRequesting::class, 'updateRequest']);
 Route::post('/edit_request', [ControllerRequesting::class, 'updateRequest']);
+
+//suppression des requetses
+Route::post('/admin_dashboard', [ControllerRequesting::class, 'deleteRequestings']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
