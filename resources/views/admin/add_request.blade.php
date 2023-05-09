@@ -23,13 +23,7 @@
   <div class="login-logo">
     Thor Technologie logo
   </div>
-  @php
-  	use App\Models\Requesting;
-  	if(isset($_GET['id']))
-  	{
-  		$req = Requesting::where('id_requesting', $_GET['id'])->first();
-  	}
-  @endphp
+ 
   <div class="card">
     <div class="card-body register-card-body">
       <p class="login-box-msg">Ajout d'un utlisateur</p>
@@ -39,7 +33,7 @@
 
         <div class="form-group has-feedback">
           <input type="text" class="form-control" placeholder="Nom" name="firstname" required 
-          value="{{$req->device}}"
+         
           >
           
         </div>
@@ -51,6 +45,9 @@
           <input type="text" class="form-control" placeholder="Nom de l'appareil" name="device" required>
           
         </div>
+		<div class="form-group has-feedback">
+			<input type="number" id="tentacles" name="number" min="1" max="100" name="number" required>
+		</div>
         <div class="form-group has-feedback">
         	<label>Motif de la requête</label>
           <textarea class="form-control" name="object"></textarea>
@@ -63,7 +60,7 @@
          @endif 
          @if(session('error')) 
           <font color="red">{{session('error')}}</font>
-           @endif
+         @endif
       </span>
 		 
         <div class="row">

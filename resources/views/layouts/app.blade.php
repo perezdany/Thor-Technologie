@@ -15,6 +15,9 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+		
+		<!-- DataTables -->
+  		<link rel="stylesheet" href="admin/datatables/dataTables.bootstrap4.css">
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

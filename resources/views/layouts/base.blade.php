@@ -6,7 +6,7 @@
     <meta name="author" content="Your name">
 
     <title>@yield('title', config('app.name'))</title>
-    <!-- Bootstrap -->
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap responsive -->
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -15,12 +15,20 @@
     <link href="css/font-awesome-ie7.css" rel="stylesheet">
     <!-- Bootbusiness theme -->
     <link href="css/boot-business.css" rel="stylesheet">
+	 
 
     <style type="text/css">
       .invisible{
         display: none;
       }
     </style>
+	 <script>
+		$(document).ready(function() {
+			$('#example').DataTable( {
+				fixedHeader: true
+			} );
+		} );
+	 </script>
 
   </head>
 <body > 
@@ -65,10 +73,8 @@
                     <li><a href="#">Email :info@thortechnologie.com</a></li>
                   </ul>
                 </li>
-				        <li><a href="/login_client"> @yield('onglet', 'Espace client')</a></li>
+				        <li><a href="/login_client"><i class="icon-user"></i> @yield('onglet', 'Espace client')</a></li>
 				 
-				
-                
               </ul>
             </div>
           </div>
@@ -141,7 +147,8 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/boot-business.js"></script>
     <!--<script type="module" src="js/trace.js"></script>-->
-
+	
+	
   </body>
 </html>
 

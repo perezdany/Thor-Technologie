@@ -18,6 +18,7 @@ class Requesting extends Model
         'requesting_date',
         'requesting_hr',
         'status',
+		'number',
         'id'
     ];
 	

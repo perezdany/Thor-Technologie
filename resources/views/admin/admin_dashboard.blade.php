@@ -27,6 +27,12 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Requêtes en cours</h3>
+              @if(session('success'))
+                <font color="blue">{{session('success')}}</font>
+              @endif 
+              @if(session('error')) 
+                <font color="red">{{session('error')}}</font>
+              @endif
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -42,13 +48,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                	<?php
+                	@php
                 		use App\Http\Controllers\ControllerRequesting;
                 		$req = (new ControllerRequesting())->inProgressRequests();
-                		?>
+                	@endphp
                 		@foreach($req as $request)
                 	
-                			<tr><td>{{$request->firstname}} {{$request->lastname}}</td><td>{{$request->user_tel}}</td><td>{{$request->device}}</td><td>{{$request->object}}</td><td>{{$request->requesting_date}}</td><td><a href="/add_request?id={{$request->id_requesting}}"><button class="btn-primary">modifier<i class="nav-icon fa fa-edit"></i></button></a><form method="post" action="/admin_dashboard">@csrf<input type="text" value="{{$request->id_requesting}}" style="display:none;" name="id"><button class="btn-danger">supprimer<i class="nav-icon fa fa-trash"></i></button></form></td></tr>
+                			<tr><td>{{$request->firstname}} {{$request->lastname}}</td><td>{{$request->user_tel}}</td><td>{{$request->device}}</td><td>{{$request->object}}</td><td>{{$request->requesting_date}}</td><td>
+                				<div class="btn-group">
+                					<a href="/update_request?id={{$request->id_requesting}}"><button class="btn btn-primary"><i class="nav-icon fa fa-edit"></i></button></a><button class="btn btn-success"><i class="nav-icon fa fa-dollar"></i></button><form method="post" action="/admin_dashboard">@csrf<input type="text" value="{{$request->id_requesting}}" style="display:none;" name="id"><button class="btn btn-danger"><i class="nav-icon fa fa-trash"></i></button></form>
+                				</div></td></tr>
                 		@endforeach
                 	
                 	
