@@ -18,6 +18,7 @@ class Customer extends Model
         'lastname',
         'user_tel',
         'user_email',
+        'address',
 		    'password',
         'confirmation_token',
     ];

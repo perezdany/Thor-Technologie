@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 @extends( 'layouts/base' )
 
 @section('title', config('app.name').' | Inscription')
@@ -23,6 +21,7 @@ session_start();
 							<input type="text" name="lastname" placeholder="Prénom(s)" required>
 							<input type="text" name="tel" placeholder="Téléphone" required>
 							<input type="text" name="email" placeholder="Email" onkeyup="this.value=this.value.toLowerCase()" required>
+							<input type="text" name="address" placeholder="Adressse" required>
 							<input type="password" name="password" placeholder="Mot de passe" id="pwd1" required>
 							<input type="password" name="password_confirmation" placeholder="Confirmez le mot de passe" id="pwd2" onkeyup="verifyPassword()" required>
 							<div id="msg" style=""></div>

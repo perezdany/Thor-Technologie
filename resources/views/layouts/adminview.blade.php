@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="admin/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+	<!--icon-->
+	<link rel="icon" href="img/thor_logo.png">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -43,23 +45,23 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-      <img src=""
+    <div class="brand-link">
+      <img src="img/thor_logo.jpg"
            alt="thor techonologie Logo"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Espace admin</span>
-    </a>
+    </div>
 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="" class="img-circle elevation-2" alt="User Image">
+          <img src="img/thor_logo.png" class="img-circle elevation-2" alt="User Image">
         </div>
-        <div class="info">
-          <a href="#" class="d-block">{{session('pseudo')}}</a>
+        <div class="info" style="color: aliceblue">
+          <span class="d-block">{{session('pseudo')}}</span>
         </div>
       </div>
 
@@ -69,7 +71,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fa fa-gift"></i>
               <p>
                 Produits
@@ -79,7 +81,7 @@
           </li>
 			
 		  <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fa fa-th"></i>
               <p>
                Services

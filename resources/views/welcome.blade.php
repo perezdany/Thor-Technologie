@@ -1,3 +1,66 @@
+<?php
+  //code pour compter le nombr devisiteurs et leurs métadonnées
+ 
+  //fonction pour chercher une chaine dans le fihier
+  function Recherche($lefichier, $chaine){
+     //$iNbCharChercher = strlen($arszChercherChaine); 
+       
+       $szOutPut = implode("", file($lefichier)); 
+       
+       //$iNbCharFichier = intval(strlen($szOutPut)); 
+       return strpos($szOutPut, $chaine);
+    }
+
+
+  function Lastnumber($lefichier, $chaine) //rechercher et retourner le dernier caractèe du nom de "VISITEUR :"
+  {
+    
+    $szOutPut = implode("", file($lefichier)); 
+    return mb_strrchr($szOutPut, $chaine, $before_caract = false); 
+       
+  }
+  
+  $nb_visiteur = 0; // instanciation du nombre de visiteurs
+  $chv = "VISITEURS =";
+  $_SERVER["REMOTE_ADDR"];
+  //$_SERVER['REMOTE_HOST'];
+  $path = 'stats/visiteurs.txt';
+
+
+  $add_ip = strval("".$_SERVER["REMOTE_ADDR"]."");//adresse Ip du client
+
+  $machine = $_SERVER['HTTP_USER_AGENT']; //gethostbyaddr( $_SERVER["REMOTE_ADDR"]);//strval("".$_SERVER['REMOTE_HOST']."");// nom du client
+
+  //echo "<h1>".get_browser($_SERVER['HTTP_USER_AGENT'])."</h1>";
+
+  $fichier = fopen($path, 'c+b');
+  $resultat = Recherche($path, $add_ip); //vrivier si ya une chaine dans ce fichier
+  
+  if($resultat != False)//on a pas trouvé d'addresse
+  {
+    $info = Lastnumber($path, $chv); //recher le derier nombre de visiteur
+    
+    //on va ensuite tronquer cette chaine
+    $of = strlen($info)-strlen($chv);
+    $n = intval(substr($info, -1*$of));
+    $nb_visiteur = $n;
+    $chaine = "ADRESSE IP= ".$add_ip." ||DATE= ".date('d/m/Y')." ||HEURE= ".date('H:i:s')."||CLIENT= ".$machine."||VISITEURS =".$nb_visiteur."\n";   
+  }
+  else
+  {
+    $info = Lastnumber($path, $chv);
+  
+    $of = strlen($info)-strlen($chv);
+    $n = intval(substr($info, -1*$of));
+    $nb_visiteur = $n+1;
+    $chaine = "ADRESSE IP= ".$add_ip." ||DATE= ".date('d/m/Y')." ||HEURE= ".date('H:i:s')."||CLIENT= ".$machine."||VISITEURS =".$nb_visiteur."\n";    
+  }
+
+  //echo "<h1>résultats:".$info."|||".$resultat."|||".$nb_visiteur;
+  fseek($fichier, filesize('stats/visiteurs.txt'));
+  fwrite($fichier, $chaine);
+
+?>
 @extends('layouts/base')
     
 
@@ -5,8 +68,32 @@
 
 	@section('content')
     <!-- Start: MAIN CONTENT -->
-    <div class="content">
-      <!-- Start: slider -->
+    <div class="container">
+          <div class="page-header">
+          <h1>THOR TECHNOLOGIE, <small> Le savoir-faire au quotidien</small></h1>
+        </div>
+      <div class="row bottom-space">            
+          <div class="span6">
+           
+             <p>
+                          Entreprise Informatique spécialisée dans la maintenance et l'entretien des produits APPLE (Macs, IPhones, IPads...).confiez nous vos appareils.
+                          
+                          Nous sommes THOR TECHNOLOGIE et nous sommes a votre services pour besoins en maintenance de vos ordinateurs.
+                          Nous résolvons vos problèmes technologiques grâce à nos produits géniaux.
+                           Un résultat satifaisant avec une garantie raisonnable.
+                            Meci de nous faire confiance
+                        </p>         
+          </div>
+          <div class="span6">
+           
+            <p>
+            
+              <video width="350" heith="250" controls> <source src="mavideo.mp4" type="video/mp4"> <source src="mavideo.ogg" type="video/ogg"> Votre navigateur est incompatible </video>
+            </p>            
+          </div>                        
+      </div>
+
+     
       <div class="slider">
         <div class="container-fluid">
           <div id="heroSlider" class="carousel slide">
@@ -15,31 +102,15 @@
                 <div class="hero-unit">
                   <div class="row-fluid">
                     <div class="span7 marketting-info">
-                      <h3>THOR TECHNOLOGIE, Le savoir-faire au quotidien</h3>
+                      <h3>Thor technologie</h3>
                       <p>
-                        Entreprise Informatique spécialisée dans la maintenance et l'entretien des produits APPLE (Macs, IPhones, IPads...).confiez nous vos appareils.
-						  
-                      </p>
-                                            
-                    </div>
-                    <div class="span5">
-                      <img src="img/thor_tech680x453.jpg" class="" alt="">
-                    </div>
-                  </div>                  
-                </div>
-              </div>
-              <div class="item">
-                <div class="hero-unit">
-                  <div class="row-fluid">
-                    <div class="span7 marketting-info">
-                      <h3>THOR TECHNOLOGIE, Le savoir-faire au quotidien</h3>
-                      <p>
-                        Nous sommes THOR TECHNOLOGIE et nous sommes a votre services pour besoins en maintenance de vos ordinateurs.
+                        Les appareils de marque Apple n'ont plus de secret pour nous.
+                        Confiez nous vos appareils. vous ne serz pas déçu
                       </p>
                                          
                     </div>
                     <div class="span5">
-                      <img src="img/2.jpg" class="thumbnail" alt="">
+                      <img src="img/thor_tech680x453.jpg" class="thumbnail">
                     </div>
                   </div>                  
                 </div>
@@ -48,16 +119,15 @@
                 <div class="hero-unit">
                   <div class="row-fluid">
                     <div class="span7 marketting-info">
-                      <h3>THOR TECHNOLOGIE, Le savoir-faire au quotidien</h3>
+                      <h3>Thor technologie</h3>
                       <p>
-                         Nous résolvons vos problèmes technologiques grâce à nos produits géniaux.
-                         Un résultat satifaisant avec une garantie raisonnable.
-                     
+                        Les appareils de marque Apple n'ont plusde secret pour nous.
+                        Confiez nous vos appareils. vous ne serz pas déçu
                       </p>
-                                           
+                                   
                     </div>
                     <div class="span5">
-                      <img src="img/3.jpg" class="thumbnail" alt="">
+                      <img src="img/2.jpg" class="thumbnail">
                     </div>
                   </div>                  
                 </div>
@@ -66,14 +136,32 @@
                 <div class="hero-unit">
                   <div class="row-fluid">
                     <div class="span7 marketting-info">
-                      <h3>THOR TECHNOLOGIE, Le savoir-faire au quotidien</h3>
+                      <h3>Thor technologie</h3>
                       <p>
-                          Merci de nous faire confiance!!
+                        Les appareils de marque Apple n'ont plusde secret pour nous.
+                        Confiez nous vos appareils. vous ne serz pas déçu
                       </p>
-                                        
+                                   
                     </div>
                     <div class="span5">
-                      <img src="img/5.jpeg" class="thumbnail" alt="">
+                      <img src="img/3.jpg" class="thumbnail">
+                    </div>
+                  </div>                  
+                </div>
+              </div>
+              <div class="item">
+                <div class="hero-unit">
+                  <div class="row-fluid">
+                    <div class="span7 marketting-info">
+                      <h3>Thor technologie</h3>
+                      <p>
+                        Les appareils de marque Apple n'ont plusde secret pour nous.
+                        Confiez nous vos appareils. vous ne serz pas déçu
+                      </p>
+                                   
+                    </div>
+                    <div class="span5">
+                      <img src="img/1.jpg" class="thumbnail">
                     </div>
                   </div>                  
                 </div>
@@ -85,134 +173,72 @@
         </div>
       </div>
       <!-- End: slider -->
-      <!-- Start: PRODUCT LIST -->
-        <div class="container">
-			<p><marquee><h4><i><font size="13px" color="#0091CA">Ce site est actuellement en construction !!</font></i></h4></marquee></p>
-          <!--<div class="page-header">
-            <h2>Our products</h2>
+        <!--     
+        <div class="row bottom-space">            
+          <div class="span6">
+            <a href="#"><img src="http://placehold.it/200x100" class="bottom-space-less thumbnail"></a>
+            <p>
+              Short discription about your patnet.Short discription about your patnet.
+              Short discription about your patnet.Short discription about your patnet.
+              Short discription about your patnet.Short discription about your patnet.
+              Short discription about your patnet.Short discription about your patnet.
+            </p>            
           </div>
-          <div class="row-fluid">
-            <ul class="thumbnails">
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="img/placeholder-360x200.jpg" alt="product name">
-                  <div class="caption">
-                    <h3>Product name</h3>
-                    <p>
-                      Few attractive words about your product.Few attractive words about your product.
-                      Few attractive words about your product.Few attractive words about your product.
-                    </p>
-                  </div>
-                  <div class="widget-footer">
-                    <p>
-                      <a href="#" class="btn btn-primary">Buy now</a>&nbsp;
-                      <a href="product.html" class="btn">Read more</a>
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="img/placeholder-360x200.jpg" alt="product name">
-                  <div class="caption">
-                    <h3>Product name</h3>
-                    <p>
-                      Few attractive words about your product.Few attractive words about your product.
-                      Few attractive words about your product.Few attractive words about your product.
-                    </p>
-                  </div>
-                  <div class="widget-footer">
-                    <p>
-                      <a href="#" class="btn btn-primary">Buy now</a>&nbsp;
-                      <a href="product.html" class="btn">Read more</a>
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="img/placeholder-360x200.jpg" alt="product name">
-                  <div class="caption">
-                    <h3>Product name</h3>
-                    <p>
-                      Few attractive words about your product.Few attractive words about your product.
-                      Few attractive words about your product.Few attractive words about your product.
-                    </p>
-                  </div>
-                  <div class="widget-footer">
-                    <p>
-                      <a href="#" class="btn btn-primary">Buy now</a>&nbsp;
-                      <a href="product.html" class="btn">Read more</a>
-                    </p>
-                  </div>
-                </div>
-              </li>
-            </ul>
+          <div class="span6">
+            <a href="#"><img src="http://placehold.it/200x100" class="bottom-space-less thumbnail"></a>
+            <p>
+              Short discription about your patnet.Short discription about your patnet.
+              Short discription about your patnet.Short discription about your patnet.
+              Short discription about your patnet.Short discription about your patnet.
+              Short discription about your patnet.Short discription about your patnet.
+            </p>            
+          </div>                        
+        </div><div class="row bottom-space">            
+          <div class="span6">
+           
+            <div class="marketting-info">
+                        
+                        <p>
+                          Entreprise Informatique spécialisée dans la maintenance et l'entretien des produits APPLE (Macs, IPhones, IPads...).confiez nous vos appareils.
+                
+                        </p>
+                                              
+                </div>      
           </div>
-          <div class="page-header">
-            <h2>Our Services</h2>
+          <div class="span6">
+            
+         
+              <video width="300" heith="200" controls> <source src="mavideo.mp4" type="video/mp4"> <source src="mavideo.ogg" type="video/ogg"> Votre navigateur est incompatible </video>
+                      
+          </div>                        
+        </div>-->
+        <!--<div class="row">
+          <div class="span6">
+           
+              <div class="span7 marketting-info">
+                        <h3>THOR TECHNOLOGIE, Le savoir-faire au quotidien</h3>
+                        <p>
+                          Nous sommes THOR TECHNOLOGIE et nous sommes a votre services pour besoins en maintenance de vos ordinateurs.
+                        </p>
+                                           
+                      </div>    
           </div>
-          <div class="row-fluid">
-            <ul class="thumbnails">
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="img/placeholder-360x200.jpg" alt="product name">
-                  <div class="caption">
-                    <h3>Service title</h3>
-                    <p>
-                      Few attractive words about your service.Few attractive words about your service.
-                      Few attractive words about your service.Few attractive words about your service.
-                    </p>
-                  </div>
-                  <div class="widget-footer">
-                    <p>
-                      <a href="#" class="btn btn-primary">Try for free</a>&nbsp;
-                      <a href="product.html" class="btn">Read more</a>
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="img/placeholder-360x200.jpg" alt="product name">
-                  <div class="caption">
-                    <h3>Service title</h3>
-                    <p>
-                      Few attractive words about your service.Few attractive words about your service.
-                      Few attractive words about your service.Few attractive words about your service.
-                    </p>
-                  </div>
-                  <div class="widget-footer">
-                    <p>
-                      <a href="#" class="btn btn-primary">Try for free</a>&nbsp;
-                      <a href="product.html" class="btn">Read more</a>
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="img/placeholder-360x200.jpg" alt="product name">
-                  <div class="caption">
-                    <h3>Service title</h3>
-                    <p>
-                      Few attractive words about your service.Few attractive words about your service.
-                      Few attractive words about your service.Few attractive words about your service.
-                    </p>
-                  </div>
-                  <div class="widget-footer">
-                    <p>
-                      <a href="#" class="btn btn-primary">Try for free</a>&nbsp;
-                      <a href="product.html" class="btn">Read more</a>
-                    </p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>-->
-        </div>
+          <div class="span6">
+            
+             <div class="span7 marketting-info">
+                        <h3>THOR TECHNOLOGIE, Le savoir-faire au quotidien</h3>
+                        <p>
+                           Nous résolvons vos problèmes technologiques grâce à nos produits géniaux.
+                           Un résultat satifaisant avec une garantie raisonnable.
+                            Meci de nous faire confiance
+                        </p>
+                                             
+                      </div>    
+          </div>                        
+        </div>-->
+       
+        <p><marquee><h4><i><font size="" color="#0091CA">Ce site est actuellement en construction !!</font></i></h4></marquee></p>
+ </div>
 
-      <!-- End: PRODUCT LIST -->
-    </div>
     <!-- End: MAIN CONTENT -->
     @endsection

@@ -156,6 +156,7 @@ class UserController extends Controller
 		$lastname = request('lastname');
 		$user_tel = request('tel');
 		$user_email = request('email');
+		$user_addres = request('address');
 		$user_password = Hash::make(request('password'));
 		
 		//NB: ECRIRE UN CODE JS POUR VERIFIER SI LA CONFIRMATION DU MOT DE PASSE ENTTRE CORRESPOND PAS(fait)
@@ -168,7 +169,7 @@ class UserController extends Controller
 		}
 		else
 		{
-			$customer = new Customer(['firstname' => $firstname, 'lastname' => $lastname, 'user_tel' => $user_tel,  'user_email' => $user_email, 'password' => $user_password, 'confirmation_token' => str_replace("/", '', bcrypt(Str::random(10)))]);
+			$customer = new Customer(['firstname' => $firstname, 'lastname' => $lastname, 'user_tel' => $user_tel,  'user_email' => $user_email, 'address' => $user_addres, 'password' => $user_password, 'confirmation_token' => str_replace("/", '', bcrypt(Str::random(10)))]);
 			$customer->save();
             $geter = Customer::where('user_email', $user_email)->first();
 			//envoi du mail de confirmation ; appel de la classe en fait

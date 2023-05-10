@@ -83,6 +83,7 @@ class ControllerRequesting extends Controller
 		$requesting_hr  = date('H:i:s');
 		$id_requesting = "R".date('Y-m-d H:i:s');
 		$status = 0;
+		$number = request('number');
 
 		//l'utilsateur concerné, le rechercher
 		$nom = request('firstname');
@@ -111,6 +112,7 @@ class ControllerRequesting extends Controller
     {
         if(request('status') == null)//ca veut dire que c'est pas l'admn qui est en tran de faire une modif
         {
+			//dd(request('id'));
         	$affected = DB::table('requestings')->where('id_requesting', request('id'))
               ->update(['device' => request('device'), 'object' => request('object'), 'number' => request('number')]);
             return redirect('espace_client')->with('success', 'Modification effectuée');
