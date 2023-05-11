@@ -74,15 +74,15 @@
         </div>
       <div class="row bottom-space">            
           <div class="span6">
-           
-             <p>
-                          Entreprise Informatique spécialisée dans la maintenance et l'entretien des produits APPLE (Macs, IPhones, IPads...).confiez nous vos appareils.
-                          
-                          Nous sommes THOR TECHNOLOGIE et nous sommes a votre services pour besoins en maintenance de vos ordinateurs.
-                          Nous résolvons vos problèmes technologiques grâce à nos produits géniaux.
-                           Un résultat satifaisant avec une garantie raisonnable.
-                            Meci de nous faire confiance
-                        </p>         
+            <p>
+              Entreprise Informatique spécialisée dans la maintenance et l'entretien des produits APPLE (Macs, IPhones, IPads...).confiez nous vos appareils.
+              
+              Nous sommes THOR TECHNOLOGIE et nous sommes à votre services pour tous besoins en maintenance de vos ordinateurs.
+              Nous résolvons vos problèmes technologiques grâce à nos produits géniaux.
+              Un résultat satifaisant avec une garantie raisonnable.
+              <br>Meci de nous faire confiance.
+              <br>nous sommes situé à: <strong>Cocody Vallon, Abidjan, Côte d'Ivoire<strong>
+            </p>         
           </div>
           <div class="span6">
            
@@ -105,7 +105,7 @@
                       <h3>Thor technologie</h3>
                       <p>
                         Les appareils de marque Apple n'ont plus de secret pour nous.
-                        Confiez nous vos appareils. vous ne serz pas déçu
+                        Confiez nous vos appareils. vous ne serez pas déçu.
                       </p>
                                          
                     </div>
@@ -121,8 +121,7 @@
                     <div class="span7 marketting-info">
                       <h3>Thor technologie</h3>
                       <p>
-                        Les appareils de marque Apple n'ont plusde secret pour nous.
-                        Confiez nous vos appareils. vous ne serz pas déçu
+                        Maintenance et Dépannage d'ordinateur, Mac, Iphone, Hp, Lenovo etc...
                       </p>
                                    
                     </div>
@@ -138,13 +137,12 @@
                     <div class="span7 marketting-info">
                       <h3>Thor technologie</h3>
                       <p>
-                        Les appareils de marque Apple n'ont plusde secret pour nous.
-                        Confiez nous vos appareils. vous ne serz pas déçu
+                        Déblocage des systèmes IOS de tout genre; même les téléphones importés
                       </p>
                                    
                     </div>
                     <div class="span5">
-                      <img src="img/3.jpg" class="thumbnail">
+                      <img src="img/iphone1680x453.png" class="thumbnail">
                     </div>
                   </div>                  
                 </div>
@@ -155,8 +153,7 @@
                     <div class="span7 marketting-info">
                       <h3>Thor technologie</h3>
                       <p>
-                        Les appareils de marque Apple n'ont plusde secret pour nous.
-                        Confiez nous vos appareils. vous ne serz pas déçu
+                        Des délais de livraison raisonnables avec satisfaction à l'appui
                       </p>
                                    
                     </div>

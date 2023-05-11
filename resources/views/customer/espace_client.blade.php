@@ -37,12 +37,11 @@
 		<table class="table table-hover">
 		  <thead>
 			<tr>
-			  <th>Nom & Prénoms</th>
-			  
+		
 			  <th>Nom de l'appareil</th>
 			  <th>Nombre</th>
 			  <th>Objet</th>
-			  <th>Date d'enregistrement</th>
+			  <th>Durée de traitement(jr)</th>
 			</tr>
 		  </thead>
 		  <tbody>
@@ -52,9 +51,17 @@
               @endphp
 			  @foreach($req as $request)
 
-			  <tr><td>{{$request->firstname}} {{$request->lastname}}</td><td>{{$request->device}}</td><td>{{$request->number}}</td><td>{{$request->object}}</td><td>{{$request->requesting_date}}</td><td>
+			  <!-- aire un script calculer la durée du jours -->
+
+			  <tr><td>{{$request->device}}</td><td>{{$request->number}}</td><td>{{$request->object}}</td><td>
+			  	@if($request->duration == null)
+			  		non définie
+			  	@else
+			  		{{$request->duration}}
+			  	@endif
+			  </td><td>
 			<div class="btn-group">
-				<a href="/edit_request?id={{$request->id_requesting}}"><button class="btn btn-primary"><i class="mdi mdi-border-color" style="color:#fff"></i></button></a><button class="btn btn-success"><i class="mdi mdi-cash-usd" style="color:#fff"></i></button><form method="post" action="/espace_client">@csrf<input type="text" value="{{$request->id_requesting}}" style="display:none;" name="id"><button class="btn btn-danger"><i class="mdi mdi-trash-can" style="color:#fff"></i></button></form>
+				<a href="/edit_request?id={{$request->id_requesting}}"><button class="btn btn-primary"><i class="mdi mdi-border-color" style="color:#fff"></i></button></a><!--<button class="btn btn-success"><i class="mdi mdi-cash-usd" style="color:#fff"></i></button>--><form method="post" action="/espace_client">@csrf<input type="text" value="{{$request->id_requesting}}" style="display:none;" name="id"><button class="btn btn-danger"><i class="mdi mdi-trash-can" style="color:#fff"></i></button></form>
 			</div></td></tr>
 			@endforeach
 			

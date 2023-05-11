@@ -49,10 +49,22 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-3 control-label">nombre d'appareils:</label>
+                    <label  class="col-sm-3 control-label">nombre d'appareils:</label>
 
                     <div class="col-sm-10">
                       <input type="number" class="form-control" name="number" placeholder="motif" value="{{$req->number}}" min="1" max="100">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class="col-sm-3 control-label">Durée de traitement:</label>
+
+                    <div class="col-sm-10">
+                      @if($req->duration)
+                        <input type="number" class="form-control" name="duration" placeholder="Durée" min="1" max="100" value="{{$req->duration}}">
+                      @else
+                        <input type="number" class="form-control" name="duration" placeholder="durée" min="1" max="100">
+                      @endif
+                      
                     </div>
                   </div>
                   <div class="form-group">
@@ -75,7 +87,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-info">Valider</button>
-                  <button type="reset" class="btn btn-default float-right">Annuler</button>
+                  <button type="reset" class="btn btn-default float-right"><a href="/admin_dashboard">Annuler</a></button>
                 </div>
                  @if(session('success'))
                 <font color="blue">{{session('success')}}</font>

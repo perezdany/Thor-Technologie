@@ -54,16 +54,10 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Poduits et services<b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li class="nav-header">PRODUITS</li>
-                    <li><a href="#">Produit1</a></li>
-                    <li><a href="#">Produit2</a></li>
-                    <li><a href="#">Produit3</a></li>
                     <li><a href="#">Tous les produits</a></li>             
                     <li class="divider"></li>
                     <li class="nav-header">SERVICES</li>
-                    <li><a href="#">Service1</a></li>
-                    <li><a href="#">Service2</a></li>
-                    <li><a href="#">Service3</a></li>
-                    <li><a href="#">Tous les services</a></li>
+                    <li><a href="/services">Tous les services</a></li>
                   </ul>                  
                 </li>
                 
@@ -106,8 +100,7 @@
               <ul class="quick-links">
                   <li><a href="#">L'équipe</a></li>
                   <li><a href="#">Partenaires</a></li>
-                  <li><a href="#">Evènements</a></li>
-				  <li><a href="#">Nous contacter</a></li>
+                  
               </ul>
             </nav>          
           </div>

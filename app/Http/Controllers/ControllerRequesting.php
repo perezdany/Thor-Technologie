@@ -81,7 +81,7 @@ class ControllerRequesting extends Controller
 		$device = request('device');
 		$requesting_date = date('Y-m-d');
 		$requesting_hr  = date('H:i:s');
-		$id_requesting = "R".date('Y-m-d H:i:s');
+		$id_requesting = "R".date('Y-m-d_His');
 		$status = 0;
 		$number = request('number');
 
@@ -122,7 +122,7 @@ class ControllerRequesting extends Controller
         {
         	//dd(request('id'));
         	$affected = DB::table('requestings')->where('id_requesting', request('id'))
-              ->update(['device' => request('device'), 'object' => request('object'), 'status' => request('status'), 'number' => request('number')]);
+              ->update(['device' => request('device'), 'object' => request('object'), 'status' => request('status'), 'duration' => request('duration'), 'number' => request('number')]);
               var_dump($affected);
             return redirect('admin_dashboard')->with('success', 'Modification effectuée');
         }
@@ -131,14 +131,14 @@ class ControllerRequesting extends Controller
     public function inProgressRequests()
     {
     	//fonction qui affiche les requetes en cours
-    	$req = Customer::join('requestings', 'requestings.id', '=', 'customers.id')->where('requestings.status', '0')->get(['customers.firstname', 'customers.lastname', 'customers.user_tel', 'requestings.device', 'requestings.object', 'requestings.requesting_date', 'requestings.id_requesting']);
+    	$req = Customer::join('requestings', 'requestings.id', '=', 'customers.id')->where('requestings.status', '0')->orderByRaw('requestings.requesting_date DESC')->get(['customers.firstname', 'customers.lastname', 'customers.user_tel', 'requestings.device', 'requestings.object', 'requestings.requesting_date', 'requestings.id_requesting', 'requestings.duration']);
     	return $req;
     }
 
      public function myRequests($user)
     {
     	//fonction qui affiche les requetes en cours du client
-    	$req = Customer::join('requestings', 'requestings.id', '=', 'customers.id')->where('requestings.status', '0')->where('requestings.id', $user->id)->get(['customers.firstname', 'customers.lastname', 'customers.user_tel', 'requestings.device', 'requestings.object', 'requestings.requesting_date', 'requestings.id_requesting', 'requestings.status', 'requestings.number']);
+    	$req = Customer::join('requestings', 'requestings.id', '=', 'customers.id')->where('requestings.status', '0')->where('requestings.id', $user->id)->orderByRaw('requestings.requesting_date DESC')->get(['customers.firstname', 'customers.lastname', 'customers.user_tel', 'requestings.device', 'requestings.object', 'requestings.requesting_date', 'requestings.id_requesting', 'requestings.status', 'requestings.number', 'requestings.duration']);
     	return $req;
     }
 

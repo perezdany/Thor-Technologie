@@ -30,6 +30,8 @@
                   <th>Appareil</th>
                   <th>Motif</th>
                   <th>Date</th>
+                  <th>Durée(jr)</th>
+                  <th>Restant</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -41,6 +43,36 @@
                 		@foreach($req as $request)
                 	
                 			<tr><td>{{$request->firstname}} {{$request->lastname}}</td><td>{{$request->user_tel}}</td><td>{{$request->device}}</td><td>{{$request->object}}</td><td>{{$request->requesting_date}}</td><td>
+                          @if($request->duration == null)
+                          
+                            non définie
+
+                          @else
+                            
+                            {{$request->duration}}
+                            
+                          @endif
+                      </td>
+                      <td>
+                          @if($request->duration == null)
+                          
+                            non définie
+
+                          @else
+        
+                            @php
+                            $aujourdhui = strtotime(date('Y-m-d'));
+                            $date2 = strtotime($request->requesting_date);
+                            $nb_jour = ($aujourdhui - $date2)/86400;
+                            $restant = $request->duration - $nb_jour;
+                            //$nb_jour = $interval->("%d");
+                            //strtotime($d) + ($n * 86400);
+                            @endphp
+                            {{$restant}}
+                            
+                          @endif
+                      </td>
+                      <td>
                 				<div class="btn-group">
                 					<a href="/update_request?id={{$request->id_requesting}}"><button class="btn btn-primary"><i class="nav-icon fa fa-edit"></i></button></a><button class="btn btn-success"><i class="nav-icon fa fa-dollar"></i></button><form method="post" action="/admin_dashboard">@csrf<input type="text" value="{{$request->id_requesting}}" style="display:none;" name="id"><button class="btn btn-danger"><i class="nav-icon fa fa-trash"></i></button></form>
                 				</div></td></tr>

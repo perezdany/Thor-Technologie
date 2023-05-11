@@ -33,6 +33,10 @@ Route::get('/welcome', function(){
     return view('welcome');
 });
 
+Route::get('/services', function(){
+    return view('services');
+});
+
     
 //route pour les connexions des utilisateurs
 //Route::get('/espace_client', [UserController::class, 'loginclient'])->name('connexion'); reactiver cette route aprs tous les test
@@ -110,6 +114,8 @@ Route::get('/espace_client', function(){
 Route::get('/add_request', function(){
 	return view('admin/add_request');
 });
+
+
 
 //ajout des requetses pr le client ou l'admin
 Route::post('/add_user', [Usercontroller::class, 'createCustomer']);

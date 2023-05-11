@@ -119,7 +119,7 @@
             </a>
 			</li>
 			<li class="nav-item"> 
-				<a class="nav-link"   href="#" aria-expanded="false" aria-controls="auth">
+				<a class="nav-link"   href="/services" aria-expanded="false" aria-controls="auth">
 				 <i class="mdi mdi-shopping-search menu-icon"></i>
 				  <span class="menu-title">Produits et services</span>
 
