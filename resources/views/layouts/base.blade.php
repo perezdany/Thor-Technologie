@@ -24,13 +24,13 @@
         display: none;
       }
     </style>
-	 <script>
+	 <!--<script>
 		$(document).ready(function() {
 			$('#example').DataTable( {
 				fixedHeader: true
 			} );
 		} );
-	 </script>
+	 </script>-->
 
   </head>
 <body > 
@@ -53,11 +53,10 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Poduits et services<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li class="nav-header">PRODUITS</li>
-                    <li><a href="#">Tous les produits</a></li>             
+                    <li><a href="#">Produits</a></li>             
                     <li class="divider"></li>
-                    <li class="nav-header">SERVICES</li>
-                    <li><a href="/services">Tous les services</a></li>
+                   
+                    <li><a href="/services">Services</a></li>
                   </ul>                  
                 </li>
                 
@@ -65,9 +64,9 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nous contacter<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                     <li><a href="#">Fix : 27 22 51 27 37</a></li>
-                    <li><a href="#">Mobile Whatsapp : +225 0778484847</a></li>
-                    <li><a href="#">Email :info@thortechnologie.com</a></li>
+                     <li><a>Fix : 27 22 51 27 37</a></li>
+                    <li><a>Mobile Whatsapp : +225 0778484847</a></li>
+                    <li><a>Email :info@thortechnologie.com</a></li>
                   </ul>
                 </li>
 				        <li><a href="/login_client"><i class="icon-user"></i> @yield('onglet', 'Espace client')</a></li>

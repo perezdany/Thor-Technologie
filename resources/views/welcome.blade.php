@@ -69,28 +69,34 @@
 	@section('content')
     <!-- Start: MAIN CONTENT -->
     <div class="container">
-          <div class="page-header">
-          <h1>THOR TECHNOLOGIE, <small> Le savoir-faire au quotidien</small></h1>
-        </div>
-      <div class="row bottom-space">            
-          <div class="span6">
-            <p>
-              Entreprise Informatique spécialisée dans la maintenance et l'entretien des produits APPLE (Macs, IPhones, IPads...).confiez nous vos appareils.
-              
-              Nous sommes THOR TECHNOLOGIE et nous sommes à votre services pour tous besoins en maintenance de vos ordinateurs.
-              Nous résolvons vos problèmes technologiques grâce à nos produits géniaux.
-              Un résultat satifaisant avec une garantie raisonnable.
-              <br>Meci de nous faire confiance.
-              <br>nous sommes situé à: <strong>Cocody Vallon, Abidjan, Côte d'Ivoire<strong>
-            </p>         
-          </div>
-          <div class="span6">
+       <div class="page-header">
+         <h1>THOR TECHNOLOGIE, <small> Le savoir-faire au quotidien</small></h1>
+       </div>
+      <div class="container-fluid ">   
+		  <div class="row-fluid ">
+			  <div class="span8">
+				<p>
+				  Entreprise Informatique spécialisée dans la maintenance et l'entretien des produits APPLE (Macs, IPhones, IPads...).confiez nous vos appareils.
+				</p>
+				<p>
+				  Nous sommes THOR TECHNOLOGIE et nous sommes à votre services pour tous besoins en maintenance de vos ordinateurs.
+				  Nous résolvons vos problèmes technologiques grâce à nos produits géniaux.
+				  Un résultat satifaisant avec une garantie raisonnable.
+				</p>
+				<p>
+					Meci de nous faire confiance.
+				  	<br>nous sommes situé à: <strong>Cocody Vallon, Abidjan, Côte d'Ivoire<strong>
+				</p>
+				         
+          	</div>
+          	<div class="span4">
            
-            <p>
-            
-              <video width="350" heith="250" controls> <source src="mavideo.mp4" type="video/mp4"> <source src="mavideo.ogg" type="video/ogg"> Votre navigateur est incompatible </video>
-            </p>            
-          </div>                        
+				<p>
+				  <video width="350" heith="250" controls> <source src="mavideo.mp4" type="video/mp4"> <source src="mavideo.ogg" type="video/ogg"> Votre navigateur est incompatible </video>
+				</p>            
+          	</div>   
+		  </div>
+                              
       </div>
 
      
@@ -137,7 +143,7 @@
                     <div class="span7 marketting-info">
                       <h3>Thor technologie</h3>
                       <p>
-                        Déblocage des systèmes IOS de tout genre; même les téléphones importés
+                        Déblocage des systèmes IOS de tout genre; même les téléphones importés.
                       </p>
                                    
                     </div>

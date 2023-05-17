@@ -24,44 +24,54 @@
         </div>
         <div class="form-group has-feedback">
           <input type="password" class="form-control" placeholder="Mot de passe" name="password" id="pwd1">
-          
-           <span class="fa fa-info form-control-feedback" id="msg">
-             
-           </span>
         </div>
-        <script type="text/javascript">
-          
-      /*UN SCRIPT QUI VA VERFIER SI LES DEUX PASSWORDS MATCHENT
-      function strongPassword()
-      {
-        var msg; 
-        var str = document.getElementById("pwd1").value; 
-        if (str.match( /[0-9]/g) && 
-            str.match( /[A-Z]/g) && 
-            str.match(/[a-z]/g) && 
-            str.match( /[^a-zA-Z\d]/g) &&
-            str.length >= 8) 
-          msg = "<p style='color:green'>Mot de passe fort.</p>"; 
-        else 
-          msg = "<p style='color:red'>Mot de passe faible.</p>"; 
-        document.getElementById("msg").innerHTML= msg;
         
-      }*/
-        </script>
         <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="Confirmer le mot de passe" id="pwd2" onkeyup="verifyPassword();">
-          
+          <input type="password" class="form-control" placeholder="Confirmer le mot de passe" id="pwd2" onkeyup="verifyPassword();"><span class="fa fa-eye form-control-feedback" id="icnopen" style="" onclick="showPassword()"></span>
+    		<span class="fa fa-eye-slash form-control-feedback" id="icnclose" style="display:none;" onclick="hidePassword()"></span>
         </div>
-		 <span class="fa fa-info form-control-feedback" id="match">
+		 <span class="" id="match">
          @if(session('success'))
           <font color="blue">{{session('success')}}</font>
          @endif 
          @if(session('error')) 
           <font color="red">{{session('error')}}</font>
            @endif
-      </span>
+         </span> 
 		  <script type="text/javascript">
+			//ecrire un script pour afficer le mot de passe
+		  function showPassword(){
+			//on recupere l'icone
+			const icon = document.getElementById('icnopen');
+			const iconcl = document.getElementById('icnclose');
 
+			//on reupere l'input
+			var theInput1 = document.getElementById('pwd1');
+			var theInput2 = document.getElementById('pwd2');
+			//on va changer leur style
+			icon.setAttribute('style', 'display:none');
+			iconcl.setAttribute('style','position:inherit;');
+
+			theInput1.setAttribute('type', 'text');
+			theInput2.setAttribute('type', 'text');
+		  }
+
+		  function hidePassword(){
+			 //on recupere l'icone
+			const icon = document.getElementById('icnopen');
+			const iconcl = document.getElementById('icnclose');
+
+			//on reupere l'input
+			var theInput1 = document.getElementById('pwd1');
+			var theInput2 = document.getElementById('pwd2');
+			//on va changer leur style
+			iconcl.setAttribute('style', 'display:none');
+			icon.setAttribute('style', 'position:inherit;');
+
+
+			theInput1.setAttribute('type', 'password');
+			theInput2.setAttribute('type', 'password');
+		  }
 			/*UN SCRIPT QUI VA VERFIER SI LES DEUX PASSWORDS MATCHENT*/
 			function verifyPassword()
 			{

@@ -22,8 +22,49 @@
 							<input type="text" name="tel" placeholder="Téléphone" required>
 							<input type="text" name="email" placeholder="Email" onkeyup="this.value=this.value.toLowerCase()" required>
 							<input type="text" name="address" placeholder="Adressse" required>
+							
 							<input type="password" name="password" placeholder="Mot de passe" id="pwd1" required>
+							<font style="font-size: 20px; position: absolute; margin-left: -20px;" onclick="showPassword()" id="icnopen"><span class="icon-eye-open" ></span>
+                  			</font> 
+                  			<font style="font-size: 20px; display:none;" onclick="hidePassword()"  id="icnclose"><span class="icon-eye-close"></span>
+                  			</font>
 							<input type="password" name="password_confirmation" placeholder="Confirmez le mot de passe" id="pwd2" onkeyup="verifyPassword()" required>
+							
+							<script type="text/javascript">
+			                  //ecrire un script pour afficer le mot de passe
+			                  function showPassword(){
+			                    //on recupere l'icone
+			                    const icon = document.getElementById('icnopen');
+			                    const iconcl = document.getElementById('icnclose');
+			                   
+			                    //on reupere l'input
+			                    var theInput1 = document.getElementById('pwd1');
+			                    var theInput2 = document.getElementById('pwd2');
+			                    //on va changer leur style
+			                    icon.setAttribute('style', 'display:none');
+			                    iconcl.setAttribute('style','margin-left: -20px; font-size: 20px; position:absolute;');
+			                  
+			                    theInput1.setAttribute('type', 'text');
+			                    theInput2.setAttribute('type', 'text');
+			                  }
+
+			                  function hidePassword(){
+			                     //on recupere l'icone
+			                    const icon = document.getElementById('icnopen');
+			                    const iconcl = document.getElementById('icnclose');
+			                    
+			                    //on reupere l'input
+			                    var theInput1 = document.getElementById('pwd1');
+			                    var theInput2 = document.getElementById('pwd2');
+			                    //on va changer leur style
+			                    iconcl.setAttribute('style', 'display:none');
+			                    icon.setAttribute('style', 'margin-left: -20px; font-size: 20px; position:absolute;');
+			                    
+			                    
+			                    theInput1.setAttribute('type', 'password');
+			                    theInput2.setAttribute('type', 'password');
+			                  }
+                			</script>
 							<div id="msg" style=""></div>
 							<div id="match" style=""></div>
 							<script type="text/javascript">
