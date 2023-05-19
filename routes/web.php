@@ -18,9 +18,9 @@ use App\Http\Controllers\ControllerMails;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 Route::get('/add_customer', function () {
     return view('add_customer');
@@ -33,9 +33,13 @@ Route::get('/welcome', function(){
     return view('welcome');
 });
 
-Route::get('/services', function(){
+/*Route::get('/services', function(){
     return view('services');
-});
+});*/
+
+/*Route::get('/our_products', function(){
+    return view('/services');
+});*/
 
     
 //route pour les connexions des utilisateurs
