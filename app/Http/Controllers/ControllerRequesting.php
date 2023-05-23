@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Admin;
 use App\Models\Requesting;
+use App\Mail\NotifRequest;
+use Illuminate\Support\Facades\Mail;
 use DB;
 
 class ControllerRequesting extends Controller
@@ -43,7 +45,7 @@ class ControllerRequesting extends Controller
 			$lastname =  request('lastname');
 			$requesting_date = date('Y-m-d');
 			$requesting_hr  = date('H:i:s');
-			$id_requesting = strval("R".date('Ymd_His')."");
+			$id_requesting = strval("R".date('His')."");
 			$number = intval(request('number'));
 			$status = 0;
 			
@@ -56,17 +58,19 @@ class ControllerRequesting extends Controller
 			if($get_user)
 			{
 				$id_user = $get_user->id;
-
+				$user_email = $get_user->user_email;
 				$add = new Requesting(['id_requesting' => $id_requesting, 'object' => $object, 'device' => $device, 'requesting_date' => $requesting_date, 'requesting_hr' => $requesting_hr, 'number' => $number, 'status' => $status, 'id' =>  $id_user]);
 				//sdd($add);
 				$add->save();
+				 $data = ['email' => $user_email, 'nom' => $firstname, 'prenom' => $lastname, 'id' => $id_requesting, 'time' => $requesting_hr];
+				Mail::to('info@thortechnologie.com')->send(new NotifRequest($data));
 
 				return redirect('espace_client')->with('success', 'Enregistrement effectué avec succès');
 
 			}
 			else
 			{
-				return redirect('espace_client')->with('error', 'vous avez entré nom ou un prénom incorrect: veillez a ne pas modifier les champs déja remplis');
+				return redirect('espace_client')->with('error', 'vous avez entré un nom ou un prénom incorrect: veillez a ne pas modifier les champs déja remplis');
 			}
     	}
 		
@@ -81,7 +85,7 @@ class ControllerRequesting extends Controller
 		$device = request('device');
 		$requesting_date = date('Y-m-d');
 		$requesting_hr  = date('H:i:s');
-		$id_requesting = "R".date('Y-m-d_His');
+		$id_requesting = "R".date('His');
 		$status = 0;
 		$number = request('number');
 

@@ -18,9 +18,9 @@ use App\Http\Controllers\ControllerMails;
 |
 */
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
-});*/
+});
 
 Route::get('/add_customer', function () {
     return view('add_customer');
@@ -33,17 +33,17 @@ Route::get('/welcome', function(){
     return view('welcome');
 });
 
-/*Route::get('/services', function(){
+Route::get('/services', function(){
     return view('services');
-});*/
+});
 
-/*Route::get('/our_products', function(){
-    return view('/services');
-});*/
+Route::get('/our_products', function(){
+    return view('/our_products');
+});
 
     
 //route pour les connexions des utilisateurs
-//Route::get('/espace_client', [UserController::class, 'loginclient'])->name('connexion'); reactiver cette route aprs tous les test
+Route::get('/espace_client', [UserController::class, 'loginclient'])->name('connexion'); //reactiver cette route aprs tous les test
 
 
 
@@ -76,7 +76,9 @@ Route::get('/admin_dashboard', function(){
 	
 });
 
-//connexion des utilisateur
+//connexion des utilisateur et deconnexion aussi
+Route::get('/logout', [UserController::class, 'logout']);
+
 Route::get('/login_client', [UserController::class, 'loginclient'])->name('connexion');
 
 Route::get('/admin_login', [UserController::class, 'loginadmin'])->name('admin_connexion');
@@ -95,7 +97,7 @@ Route::get('/add_user', function(){
 
 Route::get('/confirm/{id}/{token}', [UserController::class, 'confirm']);
 
-Route::post('/add_customer', [UserController::class, 'createCustomer']);
+Route::post('/add_customer', [UserController::class, 'CustomerRegister']);
 
 Route::post('/add_user', [UserController::class, 'createCustomer']);
 
@@ -119,7 +121,9 @@ Route::get('/add_request', function(){
 	return view('admin/add_request');
 });
 
+//routes contrats thor validation
 
+Route::post('/our_terms', [Usercontroller::class, 'Goto']);
 
 //ajout des requetses pr le client ou l'admin
 Route::post('/add_user', [Usercontroller::class, 'createCustomer']);
@@ -144,4 +148,4 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+//require __DIR__.'/auth.php';

@@ -53,7 +53,7 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Poduits et services<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="#">Produits</a></li>             
+                    <li><a href="/our_products">Produits</a></li>             
                     <li class="divider"></li>
                    
                     <li><a href="/services">Services</a></li>
@@ -64,7 +64,7 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nous contacter<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                     <li><a>Fix : 27 22 51 27 37</a></li>
+                   <li><a>Fixe : 27 35 98 24 50</a></li>
                     <li><a>Mobile Whatsapp : +225 0778484847</a></li>
                     <li><a>Email :info@thortechnologie.com</a></li>
                   </ul>
@@ -136,7 +136,7 @@
       <hr class="footer-divider">
       <div class="container">
         <p>
-          &copy; 2023, Tout Droits réservés.
+          &copy; THOR TECHNOLOGIE 2023, Tous Droits réservés.
         </p>
       </div>
     </footer>

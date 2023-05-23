@@ -12,7 +12,7 @@
 		</div>
 		<div class="row">
 			<img src="/img/thor_logo.jpg" class="thumbnail" ><br>
-			<h3>Merci de repasser une autre fois pour découvrir de nouveaux contenus</h3>
+			<h3 style="align-items: center;">Merci de revenir pour découvrir de nouveaux contenus</h3>
 		</div>
 	</div>
 </div>

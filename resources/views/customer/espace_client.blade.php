@@ -38,9 +38,9 @@
 		  <thead>
 			<tr>
 		
-			  <th>Nom de l'appareil</th>
+			  <th>Fiche de dépôt</th>
 			  <th>Nombre</th>
-			  <th>Objet</th>
+			  <th>Panne</th>
 			  <th>Durée de traitement(jr)</th>
 			</tr>
 		  </thead>
@@ -53,7 +53,7 @@
 
 			  <!-- aire un script calculer la durée du jours -->
 
-			  <tr><td>{{$request->device}}</td><td>{{$request->number}}</td><td>{{$request->object}}</td><td>
+			  <tr><td>{{$request->id_requesting}}</td><td>{{$request->number}}</td><td>{{$request->object}}</td><td>
 			  	@if($request->duration == null)
 			  		non définie
 			  	@else
@@ -79,37 +79,37 @@
 		
 		  <form class="forms-sample" action="/espace_client" method="post">
 			  @csrf
-			 <div class="form-group" style="display: none">
-			  
-			  <input type="text" class="form-control" name="firstname" value="{{session('nom')}}">
-			</div>
-			<div class="form-group" style="display: none">
-			  
-			  <input type="text" class="form-control" name="lastname" value="{{session('prenom')}}">
-			</div>
-			<div class="form-group">
-			  <label for="exampleInputUsername1">Nom de l'appareil</label>
-			  <input type="text" class="form-control" placeholder="Nom de l'appareil" name="device">
-			</div>
-			<div class="form-group">
-			  <label >Nombre</label>
-			  <input type="number" class="form-control" min="1" max="300" name="number">
-			</div>
-			<div class="form-group">
-			  <label>Motif de l'enregistrement</label>
-			  <textarea class="form-control" name="object" ></textarea>
-			</div>
-			  <div class="form-group">
-				   @if(session('success'))
-                	<font color="blue">{{session('success')}}</font>
-              		@endif 
-              		@if(session('error')) 
-                		<font color="red">{{session('error')}}</font>
-              		@endif
-			  </div>
-			
-			<button type="submit" class="btn btn-primary me-2">valider</button>
-			<button class="btn btn-danger" type="reset">Annuler</button>
+				 <div class="form-group" style="display: none">
+				  
+				  <input type="text" class="form-control" name="firstname" value="{{session('nom')}}">
+				</div>
+				<div class="form-group" style="display: none">
+				  
+				  <input type="text" class="form-control" name="lastname" value="{{session('prenom')}}">
+				</div>
+				<div class="form-group">
+				  <label for="exampleInputUsername1">Nom de l'appareil</label>
+				  <input type="text" class="form-control" placeholder="Nom de l'appareil" name="device">
+				</div>
+				<div class="form-group">
+				  <label >Nombre</label>
+				  <input type="number" class="form-control" min="1" max="300" name="number">
+				</div>
+				<div class="form-group">
+				  <label>Motif de l'enregistrement</label>
+				  <textarea class="form-control" name="object" ></textarea>
+				</div>
+				  <div class="form-group">
+					   @if(session('success'))
+	                	<font color="blue">{{session('success')}}</font>
+	              		@endif 
+	              		@if(session('error')) 
+	                		<font color="red">{{session('error')}}</font>
+	              		@endif
+				  </div>
+				
+				<button type="submit" class="btn btn-primary me-2">valider</button>
+				<button class="btn btn-danger" type="reset">Annuler</button>
 		  </form>
 		</div>
 	  </div>

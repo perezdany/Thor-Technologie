@@ -21,7 +21,7 @@
 							<input type="text" name="lastname" placeholder="Prénom(s)" required>
 							<input type="text" name="tel" placeholder="Téléphone" required>
 							<input type="text" name="email" placeholder="Email" onkeyup="this.value=this.value.toLowerCase()" required>
-							<input type="text" name="address" placeholder="Adressse" required>
+							<input type="text" name="address" placeholder="Adressse  (ex: cocody Riviera 2)" required>
 							
 							<input type="password" name="password" placeholder="Mot de passe" id="pwd1" required>
 							<font style="font-size: 20px; position: absolute; margin-left: -20px;" onclick="showPassword()" id="icnopen"><span class="icon-eye-open" ></span>

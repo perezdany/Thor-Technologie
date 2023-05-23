@@ -18,7 +18,7 @@
                   <div class="caption">
                     <h4>Déblocage IOS</h4>
                     <p>
-                      Pour tous vos téléphne Iphone bloqué et dont vous n'avez plus accès. Une mise à joue s'est mal déroulée? Faites nous parvenir l'appareil afin de vous proposer des solutions
+                      Pour tous vos téléphones Iphone bloqués et dont vous n'avez plus accès. <br>Une mise à jour s'est mal déroulée? <br>Faites nous parvenir l'appareil afin de vous proposer des solutions
                     </p>
                   </div>
                   <div class="widget-footer">
@@ -34,7 +34,7 @@
                   <div class="caption">
                     <h4>Réparations et Maitenance</h4>
                     <p>
-                      Remplacement d'écran défectueux, de batteries, de clavier, et bien d'autres.
+                     Réparation sur carte mère.<br>Remplacement d'écran défectueux.<br>Remplacement de battérie.<br>Remplacement de clavier, et bien d'autres.<br>
                     </p>
                   </div>
                   <div class="widget-footer">
@@ -50,7 +50,7 @@
                   <div class="caption">
                     <h4>Augmentation de la mémoire RAM</h4>
                     <p>
-                     Vous pouvez passer d'une mémoire RAM de 8 Gigaoctets à 16 Gigaoctets sans aucun soucis.
+                    Votre ordinateur a une configiration figée? Vous avez 8 Gigas de RAM Intégré à la carte mère?<br> Avec THOR TECHNOLOGIE, l'augmentation est un jeu d'enfant. 
                     </p>
                   </div>
                   <div class="widget-footer">

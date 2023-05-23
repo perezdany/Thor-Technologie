@@ -21,5 +21,7 @@ class Customer extends Model
         'address',
 		    'password',
         'confirmation_token',
+        'login_counter',
+        'accepted_term'
     ];
 }

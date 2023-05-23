@@ -67,7 +67,7 @@
               </div>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Mon Profile </a>
              
-              <a class="dropdown-item" href="/login_client"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Déconnexion</a>
+              <a class="dropdown-item" href="/logout"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Déconnexion</a>
             </div>
           </li>
         </ul>
@@ -111,7 +111,7 @@
 		  <li class="nav-item nav-category">Le site</li>
   
           <li class="nav-item">
-            <a class="nav-link" href="#" aria-expanded="false" aria-controls="auth">
+            <a class="nav-link" href="/welcome" aria-expanded="false" aria-controls="auth">
               
 			  <i class="mdi mdi-home menu-icon"></i>
               <span class="menu-title">Page d'accueil</span>
@@ -126,7 +126,7 @@
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link"   href="/login_client" aria-expanded="false" aria-controls="auth">
+				<a class="nav-link"   href="/logout" aria-expanded="false" aria-controls="auth">
 				 <i class="mdi mdi-account-circle menu-icon"></i>
 				  <span class="menu-title">Déconnexion</span>
 
@@ -141,7 +141,7 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="home-tab">
-				  @yield('content')
+				        @yield('content')
 				 
               </div>
             </div>
@@ -152,8 +152,8 @@
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Thor Technologie Inc.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2023. All rights reserved.</span>
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">THOR TECHNOLOGIE SARL</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2023. Tous droits réservés.</span>
           </div>
         </footer>
         <!-- partial -->
