@@ -1,6 +1,6 @@
 <?php
   //code pour compter le nombr devisiteurs et leurs métadonnées
- 
+ /*
   //fonction pour chercher une chaine dans le fihier
   function Recherche($lefichier, $chaine){
      //$iNbCharChercher = strlen($arszChercherChaine); 
@@ -59,7 +59,7 @@
   //echo "<h1>résultats:".$info."|||".$resultat."|||".$nb_visiteur;
   fseek($fichier, filesize('stats/visiteurs.txt'));
   fwrite($fichier, $chaine);
-
+*/
 ?>
 @extends('layouts/base')
     

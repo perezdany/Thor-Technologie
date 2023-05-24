@@ -17,7 +17,7 @@ class Requesting extends Model
         'device',
         'requesting_date',
         'requesting_hr',
-        'status',
+        'id_status',
         'duration',
 		'number',
         'id'

@@ -4,6 +4,7 @@
 <form action="/add_request" method="post">
          @csrf
 
+
         <div class="form-group has-feedback">
           <input type="text" class="form-control" placeholder="Nom" name="firstname" required 
          
@@ -15,16 +16,39 @@
           
         </div>
 		<div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Nom de l'appareil" name="device" required>
-          
-        </div>
+          <input type="text" class="form-control" placeholder="Nom de l'appareil" name="device" required>  
+    </div>
 		<div class="form-group has-feedback">
+      <label>Nombre d'appareil </label>
 			<input type="number" id="tentacles" name="number" min="1" max="100" name="number" class="form-control" required>
 		</div>
         <div class="form-group has-feedback">
-        	<label>Motif de la requête</label>
+        	<label>Motif de la requête </label>
           <textarea class="form-control" name="object"></textarea>
           
+        </div>
+
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" placeholder="Numéro fiche de dépôt (ex: 23051)" name="id_requesting" required>  
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Status</label>
+
+          <div class="col-sm-10">
+            <select class="form-control" name="status" >
+              @php
+                use App\Models\Statu;
+                $q_status = Statu::all();
+
+                //dd($q_status);
+              @endphp
+              @foreach($q_status as $status)
+                 <option value="{{$status->id_status}}">{{$status->libele}}</option>
+              @endforeach
+             
+            </select>
+            
+          </div>
         </div>
        
 		 <span class="fa fa-info form-control-feedback" id="match">

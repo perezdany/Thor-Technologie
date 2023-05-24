@@ -61,11 +61,11 @@ class UserController extends Controller
 
         if(DB::table('admins')->wherePseudo(request('login'))->wherePass(request('password'))->count() > 0)
         {
-            $theuser = Admin::where('pseudo', request('login'))->first();
+            $theadmin = Admin::where('pseudo', request('login'))->first();
             
             //aller avec les sessions c'est mieux
            
-  			session(['theuser' => $theuser]);
+  			session(['theadmin' => $theuser]);
 			session(['pseudo' => $theuser->pseudo]);
             return view('admin/admin_dashboard');
         }

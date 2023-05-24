@@ -3,7 +3,7 @@
   
 Merci de ne pas répondre à ce mail.
 
-L'utilisateur {{$data['nom']}} {{$data['prenom']}} a soumis une requête.<br> Identifiant de la requête: {{$data['id']}} à {{$data['time']}}<br> Merci de vérifier de consulter votre espace administrateur.
+L'utilisateur {{$data['nom']}} {{$data['prenom']}} a soumis une requête.<br> Identifiant de la requête: {{$data['id']}} à {{$data['time']}}<br> Merci de consulter votre espace administrateur.
 
 
 Cordialement,<br>

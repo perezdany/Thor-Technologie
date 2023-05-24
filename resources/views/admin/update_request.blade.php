@@ -18,6 +18,7 @@
                 @php
                   use App\Controllers\ControllerRequesting;
                   use App\Models\Requesting;
+                  use App\Models\Statu;
                   if(isset($_GET['id']))
                   {
                     $req = Requesting::where('id_requesting', $_GET['id'])->first();
@@ -28,12 +29,21 @@
                 @csrf
                 <div class="card-body">
                   <div class="form-group" style="display: none;">
-                    <label for="inputEmail3" class="col-sm-3 control-label">nom de l'appareil:</label>
+                    <label class="col-sm-6 control-label">Numéro fiche:</label>
 
                     <div class="col-sm-10">
                       <input type="text" class="form-control" id="inputEmail3" placeholder="nom de l'appareils" name="id" value="{{$req->id_requesting}}">
                     </div>
                   </div>
+                 
+                  <div class="form-group">
+                    <label class="col-sm-6 control-label">Numéro fiche:</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control"  placeholder="Ex 23052" name="newid">
+                    </div>
+                  </div>
+                 
                   <div class="form-group">
                     <label for="inputEmail3" class="col-sm-3 control-label">nom de l'appareil:</label>
 
@@ -68,17 +78,18 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-3 control-label">Status</label>
+                    <label  class="col-sm-3 control-label">Status</label>
 
                     <div class="col-sm-10">
                       <select class="form-control" name="status" >
-                        @if($req->status == 0)
-                        <option value="0">En cours de traitement</option>
-                        <option value="1">Achevé</option>
-                        @else
-                        <option value="0">Achevé</option>
-                        <option value="1">En cours de traitement</option>
-                        @endif
+                        @php
+    $req = Requesting::join('status', 'requestings.id_status', '=', 'status.id_status')->where('requestings.id_requesting', $_GET['id'])->get(['status.libele', 'requestings.id_status'])->first();
+                          $q_status = Statu::all();
+                        @endphp
+                        <option value="{{$req->id_status}}">{{$req->libele}}</option>
+                        @foreach($q_status as $status)
+                          <option value="{{$status->id_status}}">{{$status->libele}}</option>
+                        @endforeach
                       </select>
                       
                     </div>
@@ -90,11 +101,11 @@
                   <button type="reset" class="btn btn-default float-right"><a href="/admin_dashboard">Annuler</a></button>
                 </div>
                  @if(session('success'))
-                <font color="blue">{{session('success')}}</font>
-              @endif 
-              @if(session('error')) 
-                <font color="red">{{session('error')}}</font>
-              @endif
+                    <font color="blue">{{session('success')}}</font>
+                  @endif 
+                  @if(session('error')) 
+                    <font color="red">{{session('error')}}</font>
+                  @endif
                 <!-- /.card-footer -->
               </form>
             </div>

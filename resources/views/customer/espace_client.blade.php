@@ -39,8 +39,8 @@
 			<tr>
 		
 			  <th>Fiche de dépôt</th>
-			  <th>Nombre</th>
 			  <th>Panne</th>
+			  <th>Observation</th>
 			  <th>Durée de traitement(jr)</th>
 			</tr>
 		  </thead>
@@ -48,12 +48,13 @@
 			  @php
 				use App\Http\Controllers\ControllerRequesting;
 				$req = (new ControllerRequesting())->myRequests(session('theuser'));
-              @endphp
+				//var_dump(session('theuser')->id);
+        @endphp
 			  @foreach($req as $request)
 
 			  <!-- aire un script calculer la durée du jours -->
 
-			  <tr><td>{{$request->id_requesting}}</td><td>{{$request->number}}</td><td>{{$request->object}}</td><td>
+			  <tr><td>{{$request->id_requesting}}</td><td>{{$request->object}}</td><td>{{$request->libele}}</td><td>
 			  	@if($request->duration == null)
 			  		non définie
 			  	@else
