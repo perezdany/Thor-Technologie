@@ -48,7 +48,7 @@ class ControllerRequesting extends Controller
 			$requesting_hr  = date('H:i:s');
 			$id_requesting = strval(date('yd').rand(1,30)."");
 			$number = intval(request('number'));
-			$status = 1;
+			$status = 6;
 			
 
 			//dd($id_requesting);

@@ -65,8 +65,8 @@ class UserController extends Controller
             
             //aller avec les sessions c'est mieux
            
-  			session(['theadmin' => $theuser]);
-			session(['pseudo' => $theuser->pseudo]);
+  			session(['theadmin' => $theadmin]);
+			session(['pseudo' => $theadmin->pseudo]);
             return view('admin/admin_dashboard');
         }
         else
@@ -203,7 +203,7 @@ class UserController extends Controller
 
     public function CustomerRegister()
     {
-    	//ici c'est le client qu s'inscrit. vici son script creatcustomer sera pur l'admin
+    	//ici c'est le client qu s'inscrit. voici son script creatcustomer sera pur l'admin
     	$firstname = request('firstname');
 		$lastname = request('lastname');
 		$user_tel = request('tel');
@@ -309,5 +309,54 @@ class UserController extends Controller
 			return redirect('/login_client')->with('error', 'ce lien ne semble plus valide');
 			
 		}
+	}
+
+	public function editProfile()
+	{
+		//ici c'est le client modifie voici son script creatcustomer sera pur l'admin
+    	$firstname = request('firstname');
+		$lastname = request('lastname');
+		$user_tel = request('tel');
+		//$user_email = request('email');
+		$user_addres = request('address');
+		//$user_password = Hash::make(request('password'));
+		
+		//NB: ECRIRE UN CODE JS POUR VERIFIER SI LA CONFIRMATION DU MOT DE PASSE ENTTRE CORRESPOND PAS(fait)
+		if(session('theuser'))
+		{
+			$user = session('theuser');
+				
+		}
+		
+		//FAIRE AUSSi UN CODE DE SECUITE POUR NE PAS QUE L'UTILISATEUR S'ENREGISTRE PLUSEUR FOIS AVEC LE MEME MAIL c'est deja fait avec verify_exist
+		
+		$customer = DB::table('customer')->where('id', $user->id)
+		->update(['firstname' => $firstname, 'lastname' => $lastname, 'user_tel' => $user_tel, 'address' => $user_addres, 'confirmation_token' => str_replace("/", '', bcrypt(Str::random(10)))]);
+		
+        //$geter = Customer::where('user_email', $user_email)->first();
+		//envoi du mail de confirmation ; appel de la classe en fait
+		//event(new Registered $customer);
+		//$url = config('app.url').":8000/confirm/".$geter->id."/".$geter->confirmation_token;
+		
+        //$data = ['email' => $user_email, 'id' => $geter->id, 'token' => $geter->confirmation_token, 'url' => $url];
+  
+        //Mail::to($user_email)->send(new RegisterMarckdown($data));
+		
+		//customer->notify(new RegisterConfirmationNotif());
+		
+		
+
+		
+		//('add_customer')
+		//rediriger l'utisateur vers la case départ 
+        //onva vérifier si c'est l'admin qui ajoute un utilisateurr dans ce cas on va rediriger vers sa pateforme
+      
+        return redirect('espace_client')->with('success', 'Modification effctuée');
+
+	}
+
+	public function editPassword()
+	{
+
 	}
 }

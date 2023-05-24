@@ -60,10 +60,7 @@
 			  	@else
 			  		{{$request->duration}}
 			  	@endif
-			  </td><td>
-			<div class="btn-group">
-				<a href="/edit_request?id={{$request->id_requesting}}"><button class="btn btn-primary"><i class="mdi mdi-border-color" style="color:#fff"></i></button></a><!--<button class="btn btn-success"><i class="mdi mdi-cash-usd" style="color:#fff"></i></button>--><form method="post" action="/espace_client">@csrf<input type="text" value="{{$request->id_requesting}}" style="display:none;" name="id"><button class="btn btn-danger"><i class="mdi mdi-trash-can" style="color:#fff"></i></button></form>
-			</div></td></tr>
+			  </td></tr>
 			@endforeach
 			
 			
@@ -73,7 +70,7 @@
 	</div>
   </div>
 </div>
-  <div class="col-md-6 grid-margin stretch-card">
+  <!--<div class="col-md-6 grid-margin stretch-card">
 	  <div class="card">
 		<div class="card-body">
 		  <h4 class="card-title">Ajoutez une requête ici:</h4>
@@ -114,5 +111,5 @@
 		  </form>
 		</div>
 	  </div>
-  </div>
+  </div>-->
 @endsection

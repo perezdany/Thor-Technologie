@@ -65,7 +65,7 @@
                 <p class="mb-1 mt-3 font-weight-semibold">@yield('profile', 'Allen Moreno')</p>
                 <p class="fw-light text-muted mb-0">@yield('email', 'allenmoreno@gmail.com')</p>
               </div>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Mon Profile </a>
+              <a class="dropdown-item" href="my_profile"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Mon Profile </a>
              
               <a class="dropdown-item" href="/logout"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Déconnexion</a>
             </div>

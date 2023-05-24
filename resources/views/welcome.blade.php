@@ -68,11 +68,11 @@
 
 	@section('content')
     <!-- Start: MAIN CONTENT -->
-    <div class="container">
-       <div class="page-header">
-         <h1>THOR TECHNOLOGIE, <small> Le savoir-faire au quotidien</small></h1>
-       </div>
-      <div class="container-fluid ">   
+  <div class="container">
+    <div class="page-header">
+       <h1>THOR TECHNOLOGIE, <small> Le savoir-faire au quotidien</small></h1>
+    </div>
+    <div class="container-fluid ">   
 		  <div class="row-fluid ">
 			  <div class="span8">
 				<p>
@@ -96,151 +96,104 @@
 				</p>            
           	</div>   
 		  </div>
-                              
-      </div>
+                            
+    </div>
 
-     
-      <div class="slider">
-        <div class="container-fluid">
-          <div id="heroSlider" class="carousel slide">
-            <div class="carousel-inner">
-              <div class="active item">
-                <div class="hero-unit">
-                  <div class="row-fluid">
-                    <div class="span7 marketting-info">
-                      <h3>Thor technologie</h3>
-                      <p>
-                        Les appareils de marque Apple n'ont plus de secret pour nous.
-                        Confiez nous vos appareils. vous ne serez pas déçu.
-                      </p>
-                                         
-                    </div>
-                    <div class="span5">
-                      <img src="img/thor_tech680x453.jpg" class="thumbnail">
-                    </div>
-                  </div>                  
-                </div>
-              </div>
-              <div class="item">
-                <div class="hero-unit">
-                  <div class="row-fluid">
-                    <div class="span7 marketting-info">
-                      <h3>Thor technologie</h3>
-                      <p>
-                        Maintenance et Dépannage d'ordinateur, Mac, Iphone, Hp, Lenovo etc...
-                      </p>
-                                   
-                    </div>
-                    <div class="span5">
-                      <img src="img/2.jpg" class="thumbnail">
-                    </div>
-                  </div>                  
-                </div>
-              </div>
-              <div class="item">
-                <div class="hero-unit">
-                  <div class="row-fluid">
-                    <div class="span7 marketting-info">
-                      <h3>Thor technologie</h3>
-                      <p>
-                        Déblocage des systèmes IOS de tout genre; même les téléphones importés.
-                      </p>
-                                   
-                    </div>
-                    <div class="span5">
-                      <img src="img/iphone1680x453.png" class="thumbnail">
-                    </div>
-                  </div>                  
-                </div>
-              </div>
-              <div class="item">
-                <div class="hero-unit">
-                  <div class="row-fluid">
-                    <div class="span7 marketting-info">
-                      <h3>Thor technologie</h3>
-                      <p>
-                        Des délais de livraison raisonnables avec satisfaction à l'appui
-                      </p>
-                                   
-                    </div>
-                    <div class="span5">
-                      <img src="img/1.jpg" class="thumbnail">
-                    </div>
-                  </div>                  
-                </div>
+    <div class="container-fluid ">
+      <div class="row-fluid ">
+        <div class="span12">
+          <p>
+            <h6>
+              </b><i>NB </i><b>: THOR TECHNOLOGIE garantie toutes ses réparations sur SIX (6) mois pièces et main d’œuvre. Les frais de diagnostics 25 000f ne sont pas remboursable.<br>
+              -Le délai de réparation est de dix (10) jours OUVRABLE. <br>
+                -Passé le délai de deux (2) semaines, nous déclinons   toutes responsabilités pour un (1) appareil non retiré.<br>
+              -Après six (6) mois, des frais de magasinage seront appliqués à raison de 500f / jours. <br>
+              -Après un (1) an (soit 12 mois), les appareils non retirés seront vendus aux enchères.
+            </h6>
+          </p>       
+        </div>    
+      </div>
+    </div>
+
+    <div class="slider">
+      <div class="container-fluid">
+        <div id="heroSlider" class="carousel slide">
+          <div class="carousel-inner">
+            <div class="active item">
+              <div class="hero-unit">
+                <div class="row-fluid">
+                  <div class="span7 marketting-info">
+                    <h3>Thor technologie</h3>
+                    <p>
+                      Les appareils de marque Apple n'ont plus de secret pour nous.
+                      Confiez nous vos appareils. vous ne serez pas déçu.
+                    </p>
+                                       
+                  </div>
+                  <div class="span5">
+                    <img src="img/thor_tech680x453.jpg" class="thumbnail">
+                  </div>
+                </div>                  
               </div>
             </div>
-            <a class="left carousel-control" href="#heroSlider" data-slide="prev">‹</a>
-            <a class="right carousel-control" href="#heroSlider" data-slide="next">›</a>
+            <div class="item">
+              <div class="hero-unit">
+                <div class="row-fluid">
+                  <div class="span7 marketting-info">
+                    <h3>Thor technologie</h3>
+                    <p>
+                      Maintenance et Dépannage d'ordinateur, Mac, Iphone, Hp, Lenovo etc...
+                    </p>
+                                 
+                  </div>
+                  <div class="span5">
+                    <img src="img/2.jpg" class="thumbnail">
+                  </div>
+                </div>                  
+              </div>
+            </div>
+            <div class="item">
+              <div class="hero-unit">
+                <div class="row-fluid">
+                  <div class="span7 marketting-info">
+                    <h3>Thor technologie</h3>
+                    <p>
+                      Déblocage des systèmes IOS de tout genre; même les téléphones importés.
+                    </p>
+                                 
+                  </div>
+                  <div class="span5">
+                    <img src="img/iphone1680x453.png" class="thumbnail">
+                  </div>
+                </div>                  
+              </div>
+            </div>
+            <div class="item">
+              <div class="hero-unit">
+                <div class="row-fluid">
+                  <div class="span7 marketting-info">
+                    <h3>Thor technologie</h3>
+                    <p>
+                      Des délais de livraison raisonnables avec satisfaction à l'appui
+                    </p>
+                                 
+                  </div>
+                  <div class="span5">
+                    <img src="img/1.jpg" class="thumbnail">
+                  </div>
+                </div>                  
+              </div>
+            </div>
           </div>
+          <a class="left carousel-control" href="#heroSlider" data-slide="prev">‹</a>
+          <a class="right carousel-control" href="#heroSlider" data-slide="next">›</a>
         </div>
       </div>
-      <!-- End: slider -->
-        <!--     
-        <div class="row bottom-space">            
-          <div class="span6">
-            <a href="#"><img src="http://placehold.it/200x100" class="bottom-space-less thumbnail"></a>
-            <p>
-              Short discription about your patnet.Short discription about your patnet.
-              Short discription about your patnet.Short discription about your patnet.
-              Short discription about your patnet.Short discription about your patnet.
-              Short discription about your patnet.Short discription about your patnet.
-            </p>            
-          </div>
-          <div class="span6">
-            <a href="#"><img src="http://placehold.it/200x100" class="bottom-space-less thumbnail"></a>
-            <p>
-              Short discription about your patnet.Short discription about your patnet.
-              Short discription about your patnet.Short discription about your patnet.
-              Short discription about your patnet.Short discription about your patnet.
-              Short discription about your patnet.Short discription about your patnet.
-            </p>            
-          </div>                        
-        </div><div class="row bottom-space">            
-          <div class="span6">
-           
-            <div class="marketting-info">
-                        
-                        <p>
-                          Entreprise Informatique spécialisée dans la maintenance et l'entretien des produits APPLE (Macs, IPhones, IPads...).confiez nous vos appareils.
-                
-                        </p>
-                                              
-                </div>      
-          </div>
-          <div class="span6">
-            
-         
-              <video width="300" heith="200" controls> <source src="mavideo.mp4" type="video/mp4"> <source src="mavideo.ogg" type="video/ogg"> Votre navigateur est incompatible </video>
-                      
-          </div>                        
-        </div>-->
-        <!--<div class="row">
-          <div class="span6">
-           
-              <div class="span7 marketting-info">
-                        <h3>THOR TECHNOLOGIE, Le savoir-faire au quotidien</h3>
-                        <p>
-                          Nous sommes THOR TECHNOLOGIE et nous sommes a votre services pour besoins en maintenance de vos ordinateurs.
-                        </p>
-                                           
-                      </div>    
-          </div>
-          <div class="span6">
-            
-             <div class="span7 marketting-info">
-                        <h3>THOR TECHNOLOGIE, Le savoir-faire au quotidien</h3>
-                        <p>
-                           Nous résolvons vos problèmes technologiques grâce à nos produits géniaux.
-                           Un résultat satifaisant avec une garantie raisonnable.
-                            Meci de nous faire confiance
-                        </p>
-                                             
-                      </div>    
-          </div>                        
-        </div>-->
-       
-        <p><marquee><h4><i><font size="" color="#0091CA">Ce site est actuellement en construction !!</font></i></h4></marquee></p>
+    </div>
+    <!-- End: slider -->
+     
+     
+      <p><marquee><h4><i><font size="" color="#0091CA">Ce site est actuellement en construction !!</font></i></h4></marquee></p>
  </div>
 
     <!-- End: MAIN CONTENT -->

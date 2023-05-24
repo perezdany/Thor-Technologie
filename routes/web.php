@@ -79,6 +79,7 @@ Route::get('/admin_dashboard', function(){
 //connexion des utilisateur et deconnexion aussi
 Route::get('/logout', [UserController::class, 'logout']);
 
+
 Route::get('/login_client', [UserController::class, 'loginclient'])->name('connexion');
 
 Route::get('/admin_login', [UserController::class, 'loginadmin'])->name('admin_connexion');
@@ -90,6 +91,12 @@ Route::post('/login_client', [UserController::class, 'customerLogin']);
 
 //Routes pour les formulaires d'ajout
 Route::get('/add_customer', [UserController::class, 'addcustomer'])->name('inscription');
+
+//modification de profile utilisateur
+Route::get('my_profile', function(){
+    return view('customer/my_profile');
+});
+Route::post('my_profile', [UserController::class, 'editProfile']);
 
 Route::get('/add_user', function(){
 	return view('admin/add_user');

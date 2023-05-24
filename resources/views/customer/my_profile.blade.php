@@ -29,37 +29,39 @@
   <div class="col-md-6 grid-margin stretch-card">
 	  <div class="card">
 		<div class="card-body">
-		  <h4 class="card-title">Ajoutez une requête ici:</h4>
+		  <h4 class="card-title">Modifier les informations de mon compte</h4>
 	
 		
 		 @php
-                  use App\Controllers\ControllerRequesting;
-                  use App\Models\Requesting;
-                  if(isset($_GET['id']))
+                  use App\Controllers\UserController;
+                  use App\Models\Customer;
+                  if(session('theuser')->id)
                   {
-                    $req = Requesting::where('id_requesting', $_GET['id'])->first();
+                    $req = Customer::where('id', session('theuser')->id)->first();
                   }
 
                 @endphp
 		
-		  <form class="forms-sample" action="edit_request" method="post">
+		  <form class="forms-sample" action="my_profile" method="post">
 			  @csrf
-			<div class="form-group" style="display: none">
+			<div class="form-group">
 			 
-			  <input type="text" class="form-control" placeholder="Nom de l'appareil" name="id"  value="{{$req->id_requesting}}">
+			  <input type="text" class="form-control"  name="firstname"  value="{{$req->firstname}}">
 			</div>
 			<div class="form-group">
-			  <label for="exampleInputUsername1">Nom de l'appareil</label>
-			  <input type="text" class="form-control" placeholder="Nom de l'appareil" name="device"   value="{{$req->device}}" required>
+			 
+			  <input type="text" class="form-control"  name="lastname"  value="{{$req->lastname}}">
 			</div>
 			<div class="form-group">
-			  <label>Nombre</label>
-			  <input type="number" class="form-control"  min="1" max="300" value="{{$req->number}}" required name="number">
+			  
+			  <input type="text" class="form-control" placeholder="Nom de l'appareil" name="tel"   value="{{$req->user_tel}}" required>
 			</div>
+		
 			<div class="form-group">
-			  <label>Motif de l'enregistrement</label>
-			  <textarea class="form-control" name="object" required>{{$req->object}}</textarea>
+			  
+			  <input type="text" class="form-control" placeholder="Nom de l'appareil" name="address"   value="{{$req->address}}" required>
 			</div>
+			
 			  <div class="form-group">
 				   @if(session('success'))
                 	<font color="blue">{{session('success')}}</font>
@@ -71,6 +73,8 @@
 			<button type="submit" class="btn btn-primary me-2">valider</button>
 			<button class="btn btn-danger" type="reset">Annuler</button>
 		  </form>
+		  <span><a href="/#">Modifier mon addresse email</a></span><br>
+		  <span><a href="/#">Modifier mon mot de passe</a></span><br>
 		</div>
 	  </div>
   </div>
