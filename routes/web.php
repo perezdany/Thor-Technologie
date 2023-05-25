@@ -79,7 +79,6 @@ Route::get('/admin_dashboard', function(){
 //connexion des utilisateur et deconnexion aussi
 Route::get('/logout', [UserController::class, 'logout']);
 
-
 Route::get('/login_client', [UserController::class, 'loginclient'])->name('connexion');
 
 Route::get('/admin_login', [UserController::class, 'loginadmin'])->name('admin_connexion');
@@ -87,6 +86,28 @@ Route::get('/admin_login', [UserController::class, 'loginadmin'])->name('admin_c
 Route::post('/admin_login', [UserController::class, 'adminLogin']);
 
 Route::post('/login_client', [UserController::class, 'customerLogin']);
+
+Route::get('/reset_password', function(){
+    return view ('reset_password');
+});
+
+//mot de passe oublié
+Route::post('/reset_password', [UserController::class, 'ResetPassword']);
+
+Route::get('/resetpass_form/{email}', [UserController::class, 'redirectToRessetPassword']);
+
+Route::get('/resetpass_form', function(){
+    return view('resetpass_form');
+});
+
+Route::post('/resetpass_form', [UserController::class, 'editPassword']);
+
+//modification de mot de passe
+Route::get('edit_password', function(){
+    return view('customer/edit_password');
+});
+
+Route::post('/edit_password', [UserController::class, 'editPassword']);
 
 
 //Routes pour les formulaires d'ajout
@@ -98,6 +119,14 @@ Route::get('my_profile', function(){
 });
 Route::post('my_profile', [UserController::class, 'editProfile']);
 
+Route::get('edit_email', function(){
+    return view('customer/edit_email');
+});
+
+Route::post('edit_email', [UserController::class, 'editEmail']);
+Route::get('/espace_client/{email}', [UserController::class, 'acceptedEmail']);
+
+//Inscription d'utilisateur
 Route::get('/add_user', function(){
 	return view('admin/add_user');
 });

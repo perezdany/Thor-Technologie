@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class RegisterMarckdown extends Mailable
+class VerifEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,17 +16,12 @@ class RegisterMarckdown extends Mailable
      *
      * @return void
      */
-      public $data = [];
-	
-	//public $url = '{config("app.url")}:8000/confirm/{$data["id"]}/{data["token"]}';
-     
- 
+    public $data= [];
+
     public function __construct(Array $user)
     {
         //
         $this->data = $user;
-       
-
     }
 
     /**
@@ -36,6 +31,10 @@ class RegisterMarckdown extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.confirm-notif');
+        /*return $this
+        ->from('donotreply@thortechnologie.com')
+        ->subject('Ne pas répondre, Notification de requêtes')
+        ->view('emails/mailview');*/
+        return $this->markdown('emails.verif_email');
     }
 }

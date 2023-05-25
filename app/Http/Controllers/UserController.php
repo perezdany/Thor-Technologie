@@ -8,7 +8,9 @@ use App\Models\Customer;
 use App\Models\Admin;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
-use App\Mail\RegisterMarckdown;
+use App\Mail\ConfirmationEmail;
+use App\Mail\ResetPassword;
+use App\Mail\VerifEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 
@@ -16,7 +18,7 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     //La class, le controller qui va gérer les utilisateurs
-	 public function logout()
+	public function logout()
     {
 		if( session()->has('nom') AND session()->has('prenom'))
 		{
@@ -24,6 +26,12 @@ class UserController extends Controller
 			session()->pull('prenom');	
 		}
         return view('login_client');
+    }
+
+    public function redirectToRessetPassword($email)
+    {
+
+    	return redirect('resetpass_form');
     }
 
     public function loginclient()
@@ -230,7 +238,7 @@ class UserController extends Controller
 			
             $data = ['email' => $user_email, 'id' => $geter->id, 'token' => $geter->confirmation_token, 'url' => $url];
       
-            Mail::to($user_email)->send(new RegisterMarckdown($data));
+            Mail::to($user_email)->send(new ConfirmationEmail($data));
 			
 			//customer->notify(new RegisterConfirmationNotif());
 		
@@ -274,7 +282,7 @@ class UserController extends Controller
 			
             $data = ['email' => $user_email, 'id' => $geter->id, 'token' => $geter->confirmation_token, 'url' => $url];
       
-            Mail::to($user_email)->send(new RegisterMarckdown($data));
+            Mail::to($user_email)->send(new ConfirmationEmail($data));
 			
 			//customer->notify(new RegisterConfirmationNotif());
 		
@@ -306,7 +314,7 @@ class UserController extends Controller
 		else
 		{
 			//donc on le retourne encore  a la page de login
-			return redirect('/login_client')->with('error', 'ce lien ne semble plus valide');
+			return redirect('/login_client')->with('error', 'Ce lien ne semble plus valide');
 			
 		}
 	}
@@ -330,26 +338,8 @@ class UserController extends Controller
 		
 		//FAIRE AUSSi UN CODE DE SECUITE POUR NE PAS QUE L'UTILISATEUR S'ENREGISTRE PLUSEUR FOIS AVEC LE MEME MAIL c'est deja fait avec verify_exist
 		
-		$customer = DB::table('customer')->where('id', $user->id)
+		$customer = DB::table('customers')->where('id', $user->id)
 		->update(['firstname' => $firstname, 'lastname' => $lastname, 'user_tel' => $user_tel, 'address' => $user_addres, 'confirmation_token' => str_replace("/", '', bcrypt(Str::random(10)))]);
-		
-        //$geter = Customer::where('user_email', $user_email)->first();
-		//envoi du mail de confirmation ; appel de la classe en fait
-		//event(new Registered $customer);
-		//$url = config('app.url').":8000/confirm/".$geter->id."/".$geter->confirmation_token;
-		
-        //$data = ['email' => $user_email, 'id' => $geter->id, 'token' => $geter->confirmation_token, 'url' => $url];
-  
-        //Mail::to($user_email)->send(new RegisterMarckdown($data));
-		
-		//customer->notify(new RegisterConfirmationNotif());
-		
-		
-
-		
-		//('add_customer')
-		//rediriger l'utisateur vers la case départ 
-        //onva vérifier si c'est l'admin qui ajoute un utilisateurr dans ce cas on va rediriger vers sa pateforme
       
         return redirect('espace_client')->with('success', 'Modification effctuée');
 
@@ -358,5 +348,90 @@ class UserController extends Controller
 	public function editPassword()
 	{
 
+		//ici c'est le client modifie voici son script creatcustomer sera pur l'admin
+    	$firstpass = Hash::make(request('password'));;
+		
+		//$user_password = Hash::make(request('password'));
+		
+		//NB: ECRIRE UN CODE JS POUR VERIFIER SI LA CONFIRMATION DU MOT DE PASSE ENTTRE CORRESPOND PAS(fait)
+		//dd($_GET['email']);
+		if(session('email_to_reset'))
+		{
+			$customer = DB::table('customers')->where('user_email', session('email_to_reset'))
+		->update(['password' => $firstpass]);
+			session()->pull('email_to_reset');
+			return redirect('resetpass_form')->with('success', 'Réinitialisation effctuée. Vous pouvez maintenant vous conecter.');
+		}
+		else
+		{
+			$customer = DB::table('customers')->where('id', request('id'))
+		->update(['password' => $firstpass]);
+			return redirect('edit_password')->with('success', 'Modification effctuée.');
+		}
+		
+		
+	}
+
+	public function ResetPassword()
+	{
+
+		$user_email = request('email');
+	//	dd($user_email);
+		session(['email_to_reset' => $user_email]);
+		
+		//NB: ECRIRE UN CODE JS POUR VERIFIER SI LA CONFIRMATION DU MOT DE PASSE ENTTRE CORRESPOND PAS(fait)
+		
+		//FAIRE AUSSi UN CODE DE SECUITE POUR NE PAS QUE L'UTILISATEUR S'ENREGISTRE PLUSEUR FOIS AVEC LE MEME MAIL c'est deja fait avec verify_exist
+		$verify_exist = Customer::where('user_email', $user_email)->first();
+		if($verify_exist)
+		{
+			$url = config('app.url').":8000/resetpass_form/".$user_email;
+
+			$data = ['email' => $user_email, 'url' => $url];
+			Mail::to($user_email)->send(new ResetPassword($data));
+			 return redirect('reset_password')->with('success', 'Un email a été envoyé pour réinitialiser votre mot de passe');
+		}
+		else
+		{
+			
+			return redirect('reset_password')->with('error', 'ce mail n\'existe pas');
+			
+		}
+	    
+	}
+
+	public function editEmail()
+	{
+		$user_email = request('email');
+	//	dd($user_email);
+		session(['email_to_reset' => $user_email]);
+		session(['id' => request('id')]);
+		
+		$url = config('app.url').":8000/espace_client/".$user_email;
+
+		$data = ['email' => $user_email, 'url' => $url];
+		Mail::to($user_email)->send(new VerifEmail($data));
+			 return redirect('edit_email')->with('success', 'Un email a été envoyé pour vérifier votre émail.');
+		//$verify_exist = Customer::where('user_email', $user_email)->first();
+		
+
+	}
+
+	public function acceptedEmail()
+	{
+		if(session('email_to_reset') AND session('id'))
+		{
+			$customer = DB::table('customers')->where('id', session('id'))
+		->update(['user_email' => session('email_to_reset')]);
+			session()->pull('email_to_reset');
+			session()->pull('id');
+			return redirect('espace_client')->with('success', 'Email modifié et confirmé.');
+		}
+		else
+		{
+			
+			return redirect('edit_email')->with('error', 'La modification a échoué');
+		}
+		
 	}
 }

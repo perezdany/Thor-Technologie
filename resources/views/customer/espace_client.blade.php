@@ -31,6 +31,14 @@
  <div class="col-lg-12 grid-margin stretch-card">
   <div class="card">
 	<div class="card-body">
+		<div class="form-group">
+		  @if(session('success'))
+    		<font color="blue">{{session('success')}}</font>
+  		@endif 
+  		@if(session('error')) 
+    		<font color="red">{{session('error')}}</font>
+  		@endif
+		</div>
 	  <h4 class="card-title">Vos requêtes en cours de traitement</h4>
 	
 	  <div class="table-responsive">
@@ -79,11 +87,11 @@
 			  @csrf
 				 <div class="form-group" style="display: none">
 				  
-				  <input type="text" class="form-control" name="firstname" value="{{session('nom')}}">
+				  <input type="text" class="form-control" name="firstname" value="">
 				</div>
 				<div class="form-group" style="display: none">
 				  
-				  <input type="text" class="form-control" name="lastname" value="{{session('prenom')}}">
+				  <input type="text" class="form-control" name="lastname" value="">
 				</div>
 				<div class="form-group">
 				  <label for="exampleInputUsername1">Nom de l'appareil</label>

@@ -67,10 +67,13 @@
 					  
 					  @endif
 			      </div>
+              <div>
+                <h4> <a href="/reset_password" ><i class="icon-question-sign"></i>Mot de passe oublié?</a></h4>
+              </div>
+
 				      <div>
                 <h4><i class="icon-question-sign"></i> Vous n'avez pas de compte?</h4>
                 <a href="/add_customer" class="btn btn-large bottom-space">Créer un compte</a>
-              
               </div>
             </div>
           </div>

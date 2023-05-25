@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class MailConfirmUser extends Mailable
+class ConfirmationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,12 +16,17 @@ class MailConfirmUser extends Mailable
      *
      * @return void
      */
-    public $data= [];
-
+      public $data = [];
+	
+	//public $url = '{config("app.url")}:8000/confirm/{$data["id"]}/{data["token"]}';
+     
+ 
     public function __construct(Array $user)
     {
         //
         $this->data = $user;
+       
+
     }
 
     /**
@@ -31,9 +36,6 @@ class MailConfirmUser extends Mailable
      */
     public function build()
     {
-        return $this
-        ->from('donotreply@thortechnologie.com')
-        ->subject('Ne pas répondre, Confirmation de mail')
-        ->view('emails/mailview');
+        return $this->markdown('emails.confirm-notif');
     }
 }
