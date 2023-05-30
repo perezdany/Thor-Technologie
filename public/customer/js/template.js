@@ -73,7 +73,7 @@
       }
     }
 
-    $('[data-bs-toggle="minimize"]').on("click", function() {
+    $('[data-toggle="minimize"]').on("click", function() {
       if ((body.hasClass('sidebar-toggle-display')) || (body.hasClass('sidebar-absolute'))) {
         body.toggleClass('sidebar-hidden');
       } else {
@@ -110,10 +110,4 @@
       }
     });
   });
-
-  // focus input when clicking on search icon
-  $('#navbar-search-icon').click(function() {
-    $("#navbar-search-input").focus();
-  });
-  
 })(jQuery);

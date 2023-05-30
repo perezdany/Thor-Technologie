@@ -85,7 +85,7 @@ if(session('theuser'))
 				<form class="forms-sample" action="/our_terms" method="post">
 					@csrf
 					<label  class="form-check-label"><b>J'ai lu et j'accepte les conditions d'utilisations</b>
-						<input type="checkbox" class="form-check-input" required>
+						<input class="checkbox" type="checkbox" required>
 
 					</label>
 

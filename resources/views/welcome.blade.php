@@ -74,7 +74,7 @@
     </div>
     <div class="container-fluid ">   
 		  <div class="row-fluid ">
-			  <div class="span8">
+			  <div class="span7">
 				<p>
 				  Entreprise Informatique spécialisée dans la maintenance et l'entretien des produits APPLE (Macs, IPhones, IPads...).confiez nous vos appareils.
 				</p>

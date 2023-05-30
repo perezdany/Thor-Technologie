@@ -96,5 +96,16 @@
 	  </div>
   </div>
     <!-- End: MAIN CONTENT -->
+
+
+<!-- plugin js for this page -->
+  <script src="customer/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+  <script src="customer/vendors/select2/select2.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- Custom js for this page-->
+  <script src="customer/js/file-upload.js"></script>
+  <script src="customer/js/typeahead.js"></script>
+  <script src="customer/js/select2.js"></script>
+  <!-- End custom js for this page-->
 @endsection
 		 

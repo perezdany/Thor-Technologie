@@ -72,9 +72,12 @@
 			  </div>
 			<button type="submit" class="btn btn-primary me-2">valider</button>
 			<button class="btn btn-danger" type="reset">Annuler</button>
-		  </form>
-		  <span><a href="edit_email">Modifier mon addresse email</a></span><br>
-		  <span><a href="edit_password">Modifier mon mot de passe</a></span><br>
+		  </form><hr>
+			<div class="form-group">
+				<span><a href="edit_email">Modifier mon addresse email</a></span><br>
+				<span><a href="edit_password">Modifier mon mot de passe</a></span><br>
+			</div>
+		  
 		</div>
 	  </div>
   </div>

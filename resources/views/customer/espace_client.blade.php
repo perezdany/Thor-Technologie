@@ -24,28 +24,20 @@
 	{{$user->user_email}}
 @endsection
 
+@section('page', 'Tableau de bord')
 
 @section('content')
 
-
- <div class="col-lg-12 grid-margin stretch-card">
+<div class="col-lg-12 grid-margin stretch-card">
   <div class="card">
 	<div class="card-body">
-		<div class="form-group">
-		  @if(session('success'))
-    		<font color="blue">{{session('success')}}</font>
-  		@endif 
-  		@if(session('error')) 
-    		<font color="red">{{session('error')}}</font>
-  		@endif
-		</div>
-	  <h4 class="card-title">Vos requêtes en cours de traitement</h4>
+
 	
 	  <div class="table-responsive">
-		<table class="table table-hover">
+		<table class="table table-striped">
 		  <thead>
-			<tr>
-		
+		   <tr>
+
 			  <th>Fiche de dépôt</th>
 			  <th>Panne</th>
 			  <th>Observation</th>
@@ -53,71 +45,38 @@
 			</tr>
 		  </thead>
 		  <tbody>
-			  @php
-				use App\Http\Controllers\ControllerRequesting;
-				$req = (new ControllerRequesting())->myRequests(session('theuser'));
-				//var_dump(session('theuser')->id);
-        @endphp
-			  @foreach($req as $request)
+			@php
+	use App\Http\Controllers\ControllerRequesting;
+	$req = (new ControllerRequesting())->myRequests(session('theuser'));
+	//var_dump(session('theuser')->id);
+@endphp
+  @foreach($req as $request)
 
-			  <!-- aire un script calculer la durée du jours -->
+  <!-- aire un script calculer la durée du jours -->
 
-			  <tr><td>{{$request->id_requesting}}</td><td>{{$request->object}}</td><td>{{$request->libele}}</td><td>
-			  	@if($request->duration == null)
-			  		non définie
-			  	@else
-			  		{{$request->duration}}
-			  	@endif
-			  </td></tr>
-			@endforeach
-			
-			
-		  </tbody>
+  <tr><td>{{$request->id_requesting}}</td><td>{{$request->object}}</td><td>{{$request->libele}}</td><td>
+	@if($request->duration == null)
+		non définie
+	@else
+		{{$request->duration}}
+	@endif
+  </td></tr>
+@endforeach
+
 		</table>
 	  </div>
 	</div>
   </div>
 </div>
-  <!--<div class="col-md-6 grid-margin stretch-card">
-	  <div class="card">
-		<div class="card-body">
-		  <h4 class="card-title">Ajoutez une requête ici:</h4>
-		
-		  <form class="forms-sample" action="/espace_client" method="post">
-			  @csrf
-				 <div class="form-group" style="display: none">
-				  
-				  <input type="text" class="form-control" name="firstname" value="">
-				</div>
-				<div class="form-group" style="display: none">
-				  
-				  <input type="text" class="form-control" name="lastname" value="">
-				</div>
-				<div class="form-group">
-				  <label for="exampleInputUsername1">Nom de l'appareil</label>
-				  <input type="text" class="form-control" placeholder="Nom de l'appareil" name="device">
-				</div>
-				<div class="form-group">
-				  <label >Nombre</label>
-				  <input type="number" class="form-control" min="1" max="300" name="number">
-				</div>
-				<div class="form-group">
-				  <label>Motif de l'enregistrement</label>
-				  <textarea class="form-control" name="object" ></textarea>
-				</div>
-				  <div class="form-group">
-					   @if(session('success'))
-	                	<font color="blue">{{session('success')}}</font>
-	              		@endif 
-	              		@if(session('error')) 
-	                		<font color="red">{{session('error')}}</font>
-	              		@endif
-				  </div>
-				
-				<button type="submit" class="btn btn-primary me-2">valider</button>
-				<button class="btn btn-danger" type="reset">Annuler</button>
-		  </form>
-		</div>
-	  </div>
-  </div>-->
+
+
+<!-- plugin js for this page -->
+  <script src="../../vendors/typeahead.js/typeahead.bundle.min.js"></script>
+  <script src="../../vendors/select2/select2.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- Custom js for this page-->
+  <script src="../../js/file-upload.js"></script>
+  <script src="../../js/typeahead.js"></script>
+  <script src="../../js/select2.js"></script>
+  <!-- End custom js for this page-->
 @endsection
