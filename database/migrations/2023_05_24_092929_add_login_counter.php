@@ -14,7 +14,7 @@ class AddLoginCounter extends Migration
     public function up()
     {
         //
-         Schema::table('customers', function (Blueprint $table) {
+        Schema::table('customers', function (Blueprint $table) {
             //
             $table->integer('login_counter')->nullable();
         });

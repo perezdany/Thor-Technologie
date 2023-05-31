@@ -165,6 +165,8 @@ class ControllerRequesting extends Controller
 
     public function deleteMyRequestings()
     {
-    	//supression poar l'utilisateur
+    	//supression par l'utilisateur
     }
+
+   
 }

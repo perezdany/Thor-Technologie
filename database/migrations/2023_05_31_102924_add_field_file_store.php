@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddConfirmatoken extends Migration
+class AddFieldFileStore extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class AddConfirmatoken extends Migration
      */
     public function up()
     {
-        /*Schema::table('customers', function (Blueprint $table) {
+        //
+         Schema::table('requestings', function (Blueprint $table) {
             //
-            $table->string('confirmation_token')->nullable();
-        });*/
+            $table->string('file_store')->nullable();
+        });
     }
 
     /**
@@ -26,8 +27,6 @@ class AddConfirmatoken extends Migration
      */
     public function down()
     {
-        Schema::table('customers', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }

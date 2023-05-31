@@ -31,7 +31,13 @@
 <div class="col-lg-12 grid-margin stretch-card">
   <div class="card">
 	<div class="card-body">
+		@if(session('success'))
 
+  		<font color="blue">{{session('success')}}</font>
+		@endif 
+		@if(session('error')) 
+  		<font color="red">{{session('error')}}</font>
+		@endif
 	
 	  <div class="table-responsive">
 		<table class="table table-striped">
@@ -42,15 +48,18 @@
 			  <th>Panne</th>
 			  <th>Observation</th>
 			  <th>Durée de traitement(jr)</th>
+			   <th>Fiche de dépôt</th>
 			</tr>
 		  </thead>
 		  <tbody>
 			@php
-	use App\Http\Controllers\ControllerRequesting;
-	$req = (new ControllerRequesting())->myRequests(session('theuser'));
-	//var_dump(session('theuser')->id);
-@endphp
-  @foreach($req as $request)
+				use App\Http\Controllers\ControllerRequesting;
+				$req = (new ControllerRequesting())->myRequests(session('theuser'));
+				//var_dump(session('theuser')->id);
+
+				$nb = $req->count();
+			@endphp
+		  @foreach($req as $request)
 
   <!-- aire un script calculer la durée du jours -->
 
@@ -60,10 +69,17 @@
 	@else
 		{{$request->duration}}
 	@endif
+  </td><td>
+  			<form method="post" action="/download" enctype="multipart/form-data">@csrf<input type="text=" value="{{$request->file_store}}" style="display:none;" name="file">
+       
+        <button class="btn btn-info" >Télécharger</button></form>
   </td></tr>
 @endforeach
 
 		</table>
+			 @if ($nb == 0)
+            <h4>Vous n'avez pas de requête en cours</h4>
+        @endif
 	  </div>
 	</div>
   </div>

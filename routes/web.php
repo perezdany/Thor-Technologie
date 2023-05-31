@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ControllerRequesting;
 use App\Http\Controllers\ControllerMails;
+use App\Http\Controllers\FileManager;
 
 /*
 |--------------------------------------------------------------------------
@@ -179,6 +180,12 @@ Route::post('/edit_request', [ControllerRequesting::class, 'updateRequest']);
 
 //suppression des requetses
 Route::post('/admin_dashboard', [ControllerRequesting::class, 'deleteRequestings']);
+
+//upload de fichier et download de fichier les routes
+Route::post('/upload', [FileManager::class, 'UplaoadFile']);
+
+Route::post('/download', [FileManager::class, 'DownloadFile']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

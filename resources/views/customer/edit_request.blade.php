@@ -63,10 +63,10 @@
 			  <div class="form-group">
 				   @if(session('success'))
                 	<font color="blue">{{session('success')}}</font>
-              		@endif 
-              		@if(session('error')) 
+            @endif 
+            @if(session('error')) 
                 		<font color="red">{{session('error')}}</font>
-              		@endif
+             @endif
 			  </div>
 			<button type="submit" class="btn btn-primary me-2">valider</button>
 			<button class="btn btn-danger" type="reset">Annuler</button>
