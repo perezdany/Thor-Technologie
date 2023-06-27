@@ -1,11 +1,35 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<H1>THOR TECHNOLOGIE SARL</H1>
+<label>Le savoir faire au quotidien</label>
 </p>
+
+## About the app
+Thor technologie, as defined has his domaine name witch is thortechnologie.com.
+Thor technologie app was designed intended to resolve two main things:
+	-Allow the internautes to learn all about THOR TECHNOLOGIE such as hs activities, all his services and product. Create a relationship with the customers by adds and dynamic contents.
+	-Create a customer area in oder to give the progress of the service (for example, a maintenancing or a repairing of a device).
+
+Thor technologie was designed with the Laravel framework.
+Bellow is explained why i made this choice of framework.
+
+Thor tehcnologie was designed by Daniel Perez Kacou, It application developper.
+
+Contacts:
+Daniel Perez Kacou
++225 0789880477
++225 0153443776
++225 0504389308
+
+Email: kadep198@gmail.com
+LinkedIn: www.linkedin.com/in/daniel-perez-kacou-461706217
+
+
+
+
+
+
 
 ## About Laravel
 

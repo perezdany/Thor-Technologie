@@ -92,7 +92,7 @@
           	<div class="span4">
            
 				<p>
-				  <video width="350" heith="250" controls> <source src="mavideo.mp4" type="video/mp4"> <source src="mavideo.ogg" type="video/ogg"> Votre navigateur est incompatible </video>
+				  <video width="350" heigth="250" autoplay muted playsinline loop > <source src="video/video1.mp4" type="video/mp4"></video>
 				</p>            
           	</div>   
 		  </div>
