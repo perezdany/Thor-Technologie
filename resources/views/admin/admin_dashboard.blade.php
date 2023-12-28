@@ -3,21 +3,7 @@
 
 @section('content')
  <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Tableau de bord</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Admin</a></li>
-              <li class="breadcrumb-item active">tableaux de bord</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
+    
 
     <!-- Main content -->
     <section class="content">
@@ -44,7 +30,10 @@
                   <th>Appareil</th>
                   <th>Motif</th>
                   <th>Date</th>
+                  <th>Durée(jours)</th>
+                  <th>Restant</th>
                   <th>Action</th>
+                  <th>Fiche de dépôt</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -55,20 +44,57 @@
                 		@foreach($req as $request)
                 	
                 			<tr><td>{{$request->firstname}} {{$request->lastname}}</td><td>{{$request->user_tel}}</td><td>{{$request->device}}</td><td>{{$request->object}}</td><td>{{$request->requesting_date}}</td><td>
+                          @if($request->duration == null)
+                          
+                            non définie
+
+                          @else
+                            
+                            {{$request->duration}}
+                            
+                          @endif
+                      </td>
+                      <td>
+                          @if($request->duration == null)
+                          
+                            non définie
+
+                          @else
+        
+                            @php
+                            $aujourdhui = strtotime(date('Y-m-d'));
+                            $date2 = strtotime($request->requesting_date);
+                            $nb_jour = ($aujourdhui - $date2)/86400;
+                            $restant = $request->duration - $nb_jour;
+                            //$nb_jour = $interval->("%d");
+                            //strtotime($d) + ($n * 86400);
+                            @endphp
+                            {{$restant}}
+                            
+                          @endif
+                      </td>
+                      <td>
                 				<div class="btn-group">
-                					<a href="/update_request?id={{$request->id_requesting}}"><button class="btn btn-primary"><i class="nav-icon fa fa-edit"></i></button></a><button class="btn btn-success"><i class="nav-icon fa fa-dollar"></i></button><form method="post" action="/admin_dashboard">@csrf<input type="text" value="{{$request->id_requesting}}" style="display:none;" name="id"><button class="btn btn-danger"><i class="nav-icon fa fa-trash"></i></button></form>
-                				</div></td></tr>
+                					<a href="/update_request?id={{$request->id_requesting}}"><button class="btn btn-primary"><i class="nav-icon fa fa-edit"></i></button></a>&nbsp<button class="btn btn-success"><i class="nav-icon fa fa-dollar"></i></button>&nbsp<form method="post" action="/admin_dashboard">@csrf<input type="text" value="{{$request->id_requesting}}" style="display:none;" name="id"><button class="btn btn-danger"><i class="nav-icon fa fa-trash"></i></button></form>
+                				</div></td><td><form method="post" action="/upload" enctype="multipart/form-data">@csrf<input type="text" value="{{$request->id_requesting}}" style="display:none;" name="id">
+                          <span class="file-input btn btn-secondary btn-file">
+                            Choisir&hellip; <input type="file" multiple name="file">
+                          </span>
+                          <button class="btn btn-info" ><i class="nav-icon fa fa-upload"></i></button></form></td></tr>
                 		@endforeach
                 	
                 	
                 </tbody>
                 <tfoot>
-                	<th>Nom & Prénom(s)</th>
+                    <th>Nom & Prénom(s)</th>
                   <th>Téléphone</th>
                   <th>Appareil</th>
                   <th>Motif</th>
                   <th>Date</th>
+                  <th>Durée(jr)</th>
+                  <th>Restant</th>
                   <th>Action</th>
+                  <th>Fiche de dépôt</th>
                 </tfoot>
               </table>
             </div>

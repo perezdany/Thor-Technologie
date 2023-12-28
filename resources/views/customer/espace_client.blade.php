@@ -1,123 +1,110 @@
 
-@extends('../layouts/base')
+@extends('../layouts/customer')
+ 
+@section('username')
+	@if(session('nom') AND session('prenom'))
+		{{session('prenom')}} {{session('nom')}}
+	@endif	
+@endsection
+@section('profile')
+	@if(session('theuser'))
+		{{session('prenom')}} {{session('nom')}}
+	@endif	
+@endsection
+@php
+	if(session('theuser'))
+	{
+		$user = session('theuser');
+			
+	}
+		
+@endphp
 
-@section('title', config('app.name').' | Mon Espace') 
+@section('email')
+	{{$user->user_email}}
+@endsection
 
-@section('onglet', 'Déconnexion')
 
 @section('content')
 
 
-<div class="content">
-  <!-- Start: PRODUCT LIST -->
-  <div class="container">
-    <div class="page-header">
-      <h3>Bonjour cher {{session('prenom')}} {{session('nom')}}
-      </h3>
-       <div class="center-align">
-       @if(session('success'))
-       <font color="blue">{{session('success')}}</font>
-       @endif @if(session('error')) 
-       <font color="red">{{session('error')}}</font>
-       @endif
-     </div>
-    </div>
-     @php
-            use App\Http\Controllers\ControllerRequesting;
-            $req = (new ControllerRequesting())->myRequests(session('theuser'));
-            //$total = $req->count();
-            $cpt = 0;
-            //dd($total);
-     @endphp
-    @if($req)
-
-      <div class="row-fluid">
-        <ul class="thumbnails"  >
-      @foreach($req as $myrequest)
-     
-        
-           
-              <li class="span3">
-                <div class="thumbnail">
-                  <div class="caption">
-                    <h5>REQUETE {{$myrequest->id_requesting}} DU {{$myrequest->requesting_date}}</h5>
-                    <p>
-                      NOM DE LPPAREIL: {{$myrequest->device}}<br>
-                      OBJET DE LA REQUTE: {{$myrequest->object}}<br>
-                      NOMBRE D'APPAREIL: {{$myrequest->number}}
-                    </p>  
-                  </div>
-                  <div class="widget-footer">
-                    <p>
-                      <a href="/edit_request?id={{$myrequest->id_requesting}}" class="btn btn-primary">Modifier</a>
-                      <form method="post" action="/espace_client">@csrf<input type="text" value="{{$myrequest->id_requesting}}" style="display:none;" name="id"><button class="btn btn-danger">Supprimer</button></form>
-                      
-                    </p>
-                  </div>
-                </div>
-              </li>
-              
-            
-             
-      @endforeach
-          </ul>
-       </div>
-    @else
-      <h3>Vous n'avez pas de requêtes en cours de traitement. Merci.</h3>
-    @endif
-          
-</div>
-<div class="container">
-  <div class="page-header">
-
-
-  </div>
-
+ <div class="col-lg-12 grid-margin stretch-card">
   <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Faire une demande</h3>
-    
-    </div>
-    <!-- /.card-header -->
-    <div class="row">
-     <div class="span6 offset3">
-      <h4 class="widget-header"><i class="icon-edit"></i>Ajoutez vos requêtes ici</h4>
-      <div class="widget-body">
-       <div class="center-align">
-        <form class="form-horizontal form-signin-signup" method="post" action="/espace_client" id="f">
-         @csrf
-         <input type="text" name="firstname" placeholder="Nom" value="{{session('nom')}}" >
-         <input type="text" name="lastname" placeholder="Prénom(s)" value="{{session('prenom')}}" >
+	<div class="card-body">
+	  <h4 class="card-title">Vos requêtes en cours de traitement</h4>
+	
+	  <div class="table-responsive">
+		<table class="table table-hover">
+		  <thead>
+			<tr>
+			  <th>Nom & Prénoms</th>
+			  
+			  <th>Nom de l'appareil</th>
+			  <th>Nombre</th>
+			  <th>Objet</th>
+			  <th>Date d'enregistrement</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			  @php
+				use App\Http\Controllers\ControllerRequesting;
+				$req = (new ControllerRequesting())->myRequests(session('theuser'));
+              @endphp
+			  @foreach($req as $request)
 
-         <input type="text" name="device" placeholder="Nom de l'appareil" id="d" required>
-         <input type="number" id="tentacles" name="number"
-         min="1" max="100" required>
-         <label>Motif du problème:</label>
-
-         <textarea name="object" required></textarea><br><hr>
-
-         <div>
-          <input type="submit" value="Valider" class="btn btn-primary btn-large">
-        </div>
-      </form>
-     
-
-
-
-   </div>
- </div>
+			  <tr><td>{{$request->firstname}} {{$request->lastname}}</td><td>{{$request->device}}</td><td>{{$request->number}}</td><td>{{$request->object}}</td><td>{{$request->requesting_date}}</td><td>
+			<div class="btn-group">
+				<a href="/edit_request?id={{$request->id_requesting}}"><button class="btn btn-primary"><i class="mdi mdi-border-color" style="color:#fff"></i></button></a><button class="btn btn-success"><i class="mdi mdi-cash-usd" style="color:#fff"></i></button><form method="post" action="/espace_client">@csrf<input type="text" value="{{$request->id_requesting}}" style="display:none;" name="id"><button class="btn btn-danger"><i class="mdi mdi-trash-can" style="color:#fff"></i></button></form>
+			</div></td></tr>
+			@endforeach
+			
+			
+		  </tbody>
+		</table>
+	  </div>
+	</div>
+  </div>
 </div>
-</div>
-<!-- /.card-body -->
-</div>
-<!---->
-
-<!---->
-
-
-</div>
-
-
-
-</div>
+  <div class="col-md-6 grid-margin stretch-card">
+	  <div class="card">
+		<div class="card-body">
+		  <h4 class="card-title">Ajoutez une requête ici:</h4>
+		
+		  <form class="forms-sample" action="/espace_client" method="post">
+			  @csrf
+			 <div class="form-group" style="display: none">
+			  
+			  <input type="text" class="form-control" name="firstname" value="{{session('nom')}}">
+			</div>
+			<div class="form-group" style="display: none">
+			  
+			  <input type="text" class="form-control" name="lastname" value="{{session('prenom')}}">
+			</div>
+			<div class="form-group">
+			  <label for="exampleInputUsername1">Nom de l'appareil</label>
+			  <input type="text" class="form-control" placeholder="Nom de l'appareil" name="device">
+			</div>
+			<div class="form-group">
+			  <label >Nombre</label>
+			  <input type="number" class="form-control" min="1" max="300" name="number">
+			</div>
+			<div class="form-group">
+			  <label>Motif de l'enregistrement</label>
+			  <textarea class="form-control" name="object" ></textarea>
+			</div>
+			  <div class="form-group">
+				   @if(session('success'))
+                	<font color="blue">{{session('success')}}</font>
+              		@endif 
+              		@if(session('error')) 
+                		<font color="red">{{session('error')}}</font>
+              		@endif
+			  </div>
+			
+			<button type="submit" class="btn btn-primary me-2">valider</button>
+			<button class="btn btn-danger" type="reset">Annuler</button>
+		  </form>
+		</div>
+	  </div>
+  </div>
 @endsection

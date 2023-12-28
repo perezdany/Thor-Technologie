@@ -1,154 +1,173 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
- <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Your name">
+<html lang="en">
 
-    <title>@yield('title', config('app.name'))</title>
+<head>
+   <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap responsive -->
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-    <!-- Font awesome - iconic font with IE7 support --> 
-    <link href="css/font-awesome.css" rel="stylesheet">
-    <link href="css/font-awesome-ie7.css" rel="stylesheet">
-    <!-- Bootbusiness theme -->
-    <link href="css/boot-business.css" rel="stylesheet">
-	 
+  <title>@yield('title', config('app.name'))</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <style type="text/css">
-      .invisible{
-        display: none;
-      }
-    </style>
-	 <script>
-		$(document).ready(function() {
-			$('#example').DataTable( {
-				fixedHeader: true
-			} );
-		} );
-	 </script>
+  <!-- Favicons -->
+  <link href="../../public/assets/img/thor_logo32.png" rel="icon">
+  <link href="../../public/assets/img/thor_logo180.png" rel="apple-touch-icon">
 
-  </head>
-<body > 
-    <!-- Start: HEADER -->
-    <header>
-      <!-- Start: Navigation wrapper -->
-      <div class="navbar navbar-fixed-top">
-        <div class=" navbar-inner">
-          <div class="container">
-            <a href="welcome" class="brand brand-bootbus"><img src="img/logothor_tech-logo.jpg" class="img-circle" width="80px" height="80px" alt="">THOR TECHNOLOGIE</a>
-            <!-- Below button used for responsive navigation -->
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <!-- Start: Primary navigation -->
-            <div class="nav-collapse collapse">        
-              <ul class="nav pull-right">
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Poduits et services<b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li class="nav-header">PRODUITS</li>
-                    <li><a href="#">Produit1</a></li>
-                    <li><a href="#">Produit2</a></li>
-                    <li><a href="#">Produit3</a></li>
-                    <li><a href="#">Tous les produits</a></li>             
-                    <li class="divider"></li>
-                    <li class="nav-header">SERVICES</li>
-                    <li><a href="#">Service1</a></li>
-                    <li><a href="#">Service2</a></li>
-                    <li><a href="#">Service3</a></li>
-                    <li><a href="#">Tous les services</a></li>
-                  </ul>                  
-                </li>
-                
-                
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nous contacter<b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Télépohone : +225 0778484847</a></li>
-                    <li><a href="#">Email :info@thortechnologie.com</a></li>
-                  </ul>
-                </li>
-				        <li><a href="/login_client"><i class="icon-user"></i> @yield('onglet', 'Espace client')</a></li>
-				 
-              </ul>
-            </div>
-          </div>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../../public/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../../public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../../public/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../public/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../../public/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../../public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../../public/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Arsha - v4.3.0
+  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+    
+      <h1 class="logo me-auto"><a href="index.html">THOR TECHNOLOGIE</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="/welcome">Accueil</a></li>
+          <li><a class="nav-link scrollto" href="/welcome#about">A propos de nous</a></li>
+          <li><a class="nav-link scrollto" href="/welcome#services">Services</a></li>
+          
+          <li><a class="nav-link scrollto" href="/welcome#contact">Contact</a></li>
+      <li><a class="nav-link scrollto" href="/login_client">Espace Client</a></li>
+          <!--<li><a class="getstarted scrollto" href="#about">Get Started</a></li>-->
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+        THOR TECHNOLOGIE
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>THOR TECHNOLOGIE</h1>
+          <h2> Le savoir-faire au quotidien</h2>
+          <!--<div class="d-flex justify-content-center justify-content-lg-start">
+            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+          </div>-->
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+          <img src="../../public/assets/img/thor_tech_sans_fond780x646.png" class="img-fluid animated" alt="">
         </div>
       </div>
-      <!-- End: Navigation wrapper -->   
-    </header>
-    <!-- End: HEADER -->
-    <!-- Start: MAIN CONTENT -->
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
     @yield('content')
-    <!-- End: MAIN CONTENT -->
-    <!-- Start: FOOTER -->
-    <footer>
+   
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    
+
+    <div class="footer-top">
       <div class="container">
         <div class="row">
-          <div class="span3">
-            
-          
-          </div>
-          <div class="span3">
-            <h4><i class="icon-beaker icon-white"></i> A propos de nous</h4>
-            <nav>
-              <ul class="quick-links">
-                  <li><a href="#">L'équipe</a></li>
-                  <li><a href="#">Partenaires</a></li>
-                  <li><a href="#">Evènements</a></li>
-				  <li><a href="#">Nous contacter</a></li>
-              </ul>
-            </nav>          
-          </div>
-          
-          <div class="span3">
-            <h4><i class="icon-globe"></i> Social</h4>
-            <div class="social-icons-row quick-links">
-              <ul class="quick-links">
-                 <!--<li><a href="https://twitter.com/TechnologieThor">Twitter<i class="icon-twitter" style="font-size: 20px;"></i></a></li>-->
-                 <li><a href="https://www.facebook.com/groups/543377640163811/">Facebook<i class="icon-facebook" style="font-size: 20px;"></i></a></li>
-                 <li><a href="https://maps.app.goo.gl/8BVnv7fvRnsTmcSs6">Localisation<i class="icon-map-marker" style="font-size: 20px;"></i></a></li>
-                 <li><a href="https://www.linkedin.com/in/thor-technologie-5013231b9/?originalSubdomain=ci" >LinkedIn<i class="icon-linkedin" style="font-size: 20px;"></i></a></li>
-              </ul>
-            </div>
-            
-          </div> 
-			    <!--<div class="span3">
-            <h4>Nos contacts</h4>
-            <i class="icon-phone icon-large phone-number"></i> +225 0778484847<br>
 
-          
+          <div class="col-lg-4 col-md-3 footer-contact">
+            <h3>THOR TECHNOLOGIE</h3>
+            <p>
+              Cocody <br>
+             II Plateaux Vallons,<br>
+              Rue J87.<br><br>
+              <strong>Phone:</strong> +225 27 35 98 24 50 <br>
+              <strong>Email:</strong> <a href="mailto:info@thortechnologie.com">info@thortechnologie.com</a><br>
+            </p>
           </div>
-          <div class="span3">
-            <h4>Restez informé des nouveautés</h4>
-            <form>
-              <input type="text" name="email" placeholder="Email">
-              <input type="submit" class="btn btn-primary" value="S'abonner">
-            </form>
-			  
-          </div>-->
-		  
+
+          <div class="col-lg-4 col-md-3 footer-links">
+            <h4>Liens</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#hero">Accueil</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#about">A propos de nous</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
+        <li><i class="bx bx-chevron-right"></i> <a href="#">Espace Clients</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-3 footer-links">
+            <h4>Réseaux sociaux</h4>
+            <p>Vous pouvez nous retrouver sur nos différents canaux sociaux que voici:</p>
+            <div class="social-links mt-3">
+              <!--<a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>-->
+              <a href="https://www.facebook.com/profile.php?id=100090423441806" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <!--<a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>-->
+              <!--<a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>-->
+              <a href="https://www.linkedin.com/in/thor-technologie-5013231b9/?originalSubdomain=ci" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+
         </div>
       </div>
-      <hr class="footer-divider">
-      <div class="container">
-        <p>
-          &copy; 2023, Tout Droits réservés.
-        </p>
-      </div>
-    </footer>
-    <!-- End: FOOTER -->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/boot-business.js"></script>
-    <!--<script type="module" src="js/trace.js"></script>-->
-	
-	
-  </body>
-</html>
+    </div>
 
+    <div class="container footer-bottom clearfix">
+      <div class="copyright">
+        &copy; Copyright <strong><span>THOR TECHNOLOGIE 2023</span></strong>
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
+        <font size="1px">By Danype</font>
+      </div>
+
+    
+    
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../../public/assets/vendor/aos/aos.js"></script>
+  <script src="../../public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../public/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../../public/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <!--<script src="../../public/assets/vendor/php-email-form/validate.js"></script>-->
+  <script src="../../public/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../../public/assets/vendor/waypoints/noframework.waypoints.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../../public/assets/js/main.js"></script>
+
+</body>
+
+</html>

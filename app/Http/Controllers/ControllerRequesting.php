@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Admin;
 use App\Models\Requesting;
+use App\Mail\NotifRequest;
+use App\Mail\Statu;
+use Illuminate\Support\Facades\Mail;
 use DB;
 
 class ControllerRequesting extends Controller
@@ -43,9 +46,9 @@ class ControllerRequesting extends Controller
 			$lastname =  request('lastname');
 			$requesting_date = date('Y-m-d');
 			$requesting_hr  = date('H:i:s');
-			$id_requesting = strval("R".date('Ymd_His')."");
+			$id_requesting = strval(date('yd').rand(1,30)."");
 			$number = intval(request('number'));
-			$status = 0;
+			$status = 6;
 			
 
 			//dd($id_requesting);
@@ -56,17 +59,19 @@ class ControllerRequesting extends Controller
 			if($get_user)
 			{
 				$id_user = $get_user->id;
-
-				$add = new Requesting(['id_requesting' => $id_requesting, 'object' => $object, 'device' => $device, 'requesting_date' => $requesting_date, 'requesting_hr' => $requesting_hr, 'number' => $number, 'status' => $status, 'id' =>  $id_user]);
+				$user_email = $get_user->user_email;
+				$add = new Requesting(['id_requesting' => $id_requesting, 'object' => $object, 'device' => $device, 'requesting_date' => $requesting_date, 'requesting_hr' => $requesting_hr, 'number' => $number, 'id_status' => $status, 'id' =>  $id_user]);
 				//sdd($add);
 				$add->save();
+				 $data = ['email' => $user_email, 'nom' => $firstname, 'prenom' => $lastname, 'id' => $id_requesting, 'time' => $requesting_hr];
+				Mail::to('info@thortechnologie.com')->send(new NotifRequest($data));
 
 				return redirect('espace_client')->with('success', 'Enregistrement effectué avec succès');
 
 			}
 			else
 			{
-				return redirect('espace_client')->with('error', 'vous avez entré nom ou un prénom incorrect: veillez a ne pas modifier les champs déja remplis');
+				return redirect('espace_client')->with('error', 'vous avez entré un nom ou un prénom incorrect: veillez a ne pas modifier les champs déja remplis');
 			}
     	}
 		
@@ -81,8 +86,9 @@ class ControllerRequesting extends Controller
 		$device = request('device');
 		$requesting_date = date('Y-m-d');
 		$requesting_hr  = date('H:i:s');
-		$id_requesting = "R".date('Y-m-d H:i:s');
-		$status = 0;
+		$id_requesting = request('id_requesting');
+		$status = request('status');
+		$number = request('number');
 
 		//l'utilsateur concerné, le rechercher
 		$nom = request('firstname');
@@ -99,7 +105,7 @@ class ControllerRequesting extends Controller
 			
 			$get_user = Customer::whereFirstnameAndLastname($nom, $prenom)->first();
 			$id_user = $get_user->id;
-			$add = new Requesting(['id_requesting' => $id_requesting,'object' => $object,'device' => $device,'requesting_date' => $requesting_date,'requesting_hr' => $requesting_hr, 'number' => $number, 'status' => $status, 'id' =>  $id_user]);
+			$add = new Requesting(['id_requesting' => $id_requesting, 'object' => $object,'device' => $device,'requesting_date' => $requesting_date,'requesting_hr' => $requesting_hr, 'number' => $number, 'id_status' => $status, 'id' =>  $id_user]);
 			$add->save();
 
 			return redirect('add_request')->with('success', 'Enregistrement effectué avec succès');
@@ -111,6 +117,7 @@ class ControllerRequesting extends Controller
     {
         if(request('status') == null)//ca veut dire que c'est pas l'admn qui est en tran de faire une modif
         {
+			//dd(request('id'));
         	$affected = DB::table('requestings')->where('id_requesting', request('id'))
               ->update(['device' => request('device'), 'object' => request('object'), 'number' => request('number')]);
             return redirect('espace_client')->with('success', 'Modification effectuée');
@@ -120,8 +127,8 @@ class ControllerRequesting extends Controller
         {
         	//dd(request('id'));
         	$affected = DB::table('requestings')->where('id_requesting', request('id'))
-              ->update(['device' => request('device'), 'object' => request('object'), 'status' => request('status'), 'number' => request('number')]);
-              var_dump($affected);
+              ->update(['device' => request('device'), 'object' => request('object'), 'id_status' => request('status'), 'duration' => request('duration'), 'number' => request('number')]);
+              //var_dump($affected);
             return redirect('admin_dashboard')->with('success', 'Modification effectuée');
         }
     }
@@ -129,14 +136,28 @@ class ControllerRequesting extends Controller
     public function inProgressRequests()
     {
     	//fonction qui affiche les requetes en cours
-    	$req = Customer::join('requestings', 'requestings.id', '=', 'customers.id')->where('requestings.status', '0')->get(['customers.firstname', 'customers.lastname', 'customers.user_tel', 'requestings.device', 'requestings.object', 'requestings.requesting_date', 'requestings.id_requesting']);
+    	$req = Customer::join('requestings', 'requestings.id', '=', 'customers.id')->where('requestings.id_status', '<>', '4')->orderByRaw('requestings.requesting_date DESC')->get(['customers.firstname', 'customers.lastname', 'customers.user_tel', 'requestings.device', 'requestings.object', 'requestings.requesting_date', 'requestings.id_requesting', 'requestings.duration', 'requestings.id_requesting']);
+    	return $req;
+    }
+    
+    public function AllRequests()
+    {
+    	//fonction qui affiche les requetes en cours
+    	$req = Customer::join('requestings', 'requestings.id', '=', 'customers.id')->orderByRaw('requestings.requesting_date DESC')->get(['customers.firstname', 'customers.lastname', 'customers.user_tel', 'requestings.device', 'requestings.object', 'requestings.requesting_date', 'requestings.id_requesting', 'requestings.duration', 'requestings.id_requesting']);
     	return $req;
     }
 
      public function myRequests($user)
     {
     	//fonction qui affiche les requetes en cours du client
-    	$req = Customer::join('requestings', 'requestings.id', '=', 'customers.id')->where('requestings.status', '0')->where('requestings.id', $user->id)->get(['customers.firstname', 'customers.lastname', 'customers.user_tel', 'requestings.device', 'requestings.object', 'requestings.requesting_date', 'requestings.id_requesting', 'requestings.status', 'requestings.number']);
+    	$req =  DB::table('requestings')
+            ->join('customers', 'requestings.id', '=', 'customers.id')
+            ->join('status', 'requestings.id_status', '=', 'status.id_status')
+            ->select(['requestings.*', 'customers.firstname', 'customers.lastname', 'customers.user_tel', 'status.libele'])
+            ->where('requestings.id', $user->id)->orderByRaw('requestings.requesting_date DESC')
+            ->get();
+          // dd($user->id);
+         //var_dump($req);
     	return $req;
     }
 
@@ -151,6 +172,8 @@ class ControllerRequesting extends Controller
 
     public function deleteMyRequestings()
     {
-    	//supression poar l'utilisateur
+    	//supression par l'utilisateur
     }
+
+   
 }
